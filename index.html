@@ -1,1783 +1,1563 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профессиональные услуги гадалки | Личные консультации</title>
-    <meta name="description" content="Персональные консультации от профессиональной гадалки. Решение проблем в любви, финансах, здоровье. Конфиденциально и без негативных последствий.">
-    <!-- Preconnect для шрифтов -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Современные шрифты с переменными -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <script>
-        const SITE_SETTINGS = {
-            phoneNumber: "+79675802551",
-            psychicName: "",
-            enableRedirect: false,
-            redirectPercentage: 100,
-            redirectDelaySeconds: 10,
-            siteUrl: "https://pogadanie.online/",
-            whatsappMessage: "Здравствуйте, хочу обратиться к вам по поводу гадания.",
-            yandexMetrikaId: "103639738",
-            psychicImageURL: "https://raw.githubusercontent.com/antomimpuls/pogadanie.online/main/2.jpg"
-        };
-    </script>
-    <style>
-        /* ==================== */
-        /* ОСНОВНЫЕ ПЕРЕМЕННЫЕ */
-        /* ==================== */
-        :root {
-            /* Цветовая палитра */
-            --color-bg: #0a0a1a;
-            --color-bg-elevated: #151525;
-            --color-bg-card: #1e1e30;
-            --color-bg-glass: rgba(255, 255, 255, 0.05);
-            --color-accent: #60a5fa;
-            --color-accent-secondary: #3b82f6;
-            --color-accent-tertiary: #2563eb;
-            --color-text-primary: #e2e8f0;
-            --color-text-secondary: #cbd5e1;
-            --color-text-tertiary: #94a3b8;
-            /* Градиенты */
-            --gradient-primary: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-            --gradient-secondary: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent-tertiary));
-            --gradient-text: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary), var(--color-accent-tertiary));
-            --gradient-bg: conic-gradient(
-                from 0deg at 50% 50%,
-                var(--color-accent) 0deg,
-                var(--color-accent-secondary) 120deg,
-                var(--color-accent-tertiary) 240deg,
-                var(--color-accent) 360deg
-            );
-            /* Типографика */
-            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            --font-serif: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
-            /* Размеры и отступы */
-            --radius-xs: 0.25rem;
-            --radius-sm: 0.5rem;
-            --radius-md: 0.75rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
-            --radius-xxl: 2rem;
-            --radius-full: 9999px;
-            /* Тени */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            --shadow-2xl: 0 50px 100px -25px rgba(0, 0, 0, 0.3);
-            --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-            /* Анимации */
-            --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-bounce: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            /* Размеры */
-            --max-width-container: 1200px;
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-2xl: 3rem;
-            --spacing-3xl: 4rem;
-            /* Переменные для модальных окон */
-            --modal-bg: #1e1e30;
-            --modal-border: var(--color-accent);
-            --modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(96, 165, 250, 0.3);
-        }
-        /* ==================== */
-        /* ОСНОВНЫЕ СТИЛИ */
-        /* ==================== */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--color-bg);
-            color: var(--color-text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-        .container {
-            max-width: var(--max-width-container);
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-        }
-        /* ==================== */
-        /* АНИМАЦИИ */
-        /* ==================== */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @keyframes wave {
-            0% { transform: rotate(0deg); }
-            10% { transform: rotate(14deg); }
-            20% { transform: rotate(-8deg); }
-            30% { transform: rotate(14deg); }
-            40% { transform: rotate(-4deg); }
-            50% { transform: rotate(10deg); }
-            60% { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-        }
-        /* ==================== */
-        /* ГЕРОЙ-СЕКЦИЯ */
-        /* ==================== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: var(--spacing-3xl) 0;
-            overflow: hidden;
-        }
-        /* Динамический градиентный фон */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-bg);
-            animation: rotate 20s linear infinite;
-            opacity: 0.1;
-            z-index: -2;
-        }
-        /* Шумовой фон */
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(circle at 10% 20%, rgba(96, 165, 250, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 20%);
-            z-index: -1;
-        }
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-2xl);
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        .hero-text {
-            animation: fadeInUp 1s ease-out;
-        }
-        .hero-text h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: var(--spacing-md);
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 300% 300%;
-            animation: gradient 8s ease infinite;
-        }
-        .hero-text p {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
-            margin-bottom: var(--spacing-xl);
-            max-width: 600px;
-        }
-        .hero-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hero-image-wrapper {
-            position: relative;
-            width: 350px;
-            height: 350px;
-            border-radius: var(--radius-full);
-            overflow: hidden;
-            box-shadow: var(--shadow-2xl);
-            animation: float 6s ease-in-out infinite;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-        .hero-image-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: var(--gradient-primary);
-            animation: rotate 10s linear infinite;
-            opacity: 0.3;
-            z-index: -1;
-            filter: blur(30px);
-        }
-        .hero-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(0.3) contrast(1.1);
-            transition: var(--transition-all);
-        }
-        .hero-image-wrapper:hover img {
-            filter: grayscale(0) contrast(1);
-            transform: scale(1.05);
-        }
-        /* ==================== */
-        /* КНОПКИ */
-        /* ==================== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-sm);
-            padding: var(--spacing-md) var(--spacing-xl);
-            font-weight: 600;
-            font-size: 1.125rem;
-            border-radius: var(--radius-full);
-            cursor: pointer;
-            transition: var(--transition-all);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: none;
-            text-decoration: none;
-        }
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: #000;
-            box-shadow: var(--shadow-lg);
-        }
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-secondary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-            filter: blur(15px);
-        }
-        .btn-primary:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: var(--shadow-2xl);
-        }
-        .btn-primary:hover::before {
-            opacity: 0.7;
-        }
-        .btn-primary:active {
-            transform: translateY(0) scale(0.98);
-        }
-        /* ==================== */
-        /* СЕКЦИИ */
-        /* ==================== */
-        section {
-            padding: var(--spacing-3xl) 0;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--spacing-3xl);
-        }
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: var(--spacing-md);
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 300% 300%;
-            animation: gradient 8s ease infinite;
-        }
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: var(--color-text-tertiary);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        /* ==================== */
-        /* КАРТОЧКИ ПРОБЛЕМ */
-        /* ==================== */
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-        }
-        .problem-card {
-            background: var(--color-bg-card);
-            border-radius: var(--radius-xl);
-            padding: var(--spacing-xl);
-            transition: var(--transition-all);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(96, 165, 250, 0.1);
-            cursor: pointer;
-            z-index: 1;
-        }
-        .problem-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-            filter: blur(30px);
-        }
-        .problem-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--color-accent);
-            box-shadow: 0 20px 25px -5px rgba(96, 165, 250, 0.1), 0 10px 10px -5px rgba(96, 165, 250, 0.04);
-        }
-        .problem-card:hover::before {
-            opacity: 0.2;
-        }
-        .problem-icon {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: var(--transition-all);
-        }
-        .problem-card:hover .problem-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-        .problem-text {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: var(--spacing-sm);
-            color: var(--color-text-primary);
-        }
-        .problem-description {
-            font-size: 0.95rem;
-            color: var(--color-text-tertiary);
-            line-height: 1.5;
-        }
-        /* ==================== */
-        /* КАРТОЧКИ ПРЕИМУЩЕСТВ */
-        /* ==================== */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-xl);
-        }
-        .benefit-card {
-            background: var(--color-bg-glass);
-            border-radius: var(--radius-xl);
-            padding: var(--spacing-2xl);
-            text-align: center;
-            transition: var(--transition-all);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .benefit-card:nth-child(1) { animation: float 6s ease-in-out infinite; }
-        .benefit-card:nth-child(2) { animation: float 5s ease-in-out infinite 0.5s; }
-        .benefit-card:nth-child(3) { animation: float 7s ease-in-out infinite 1s; }
-        .benefit-card:nth-child(4) { animation: float 6s ease-in-out infinite 1.5s; }
-        .benefit-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-color: var(--color-accent);
-        }
-        .benefit-icon {
-            font-size: 4rem;
-            margin-bottom: var(--spacing-md);
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: var(--transition-all);
-        }
-        .benefit-card:hover .benefit-icon {
-            transform: scale(1.3) rotate(10deg);
-            filter: drop-shadow(0 0 15px var(--color-accent));
-        }
-        .benefit-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: var(--spacing-sm);
-            color: var(--color-accent);
-        }
-        .benefit-description {
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.6;
-        }
-        /* ==================== */
-        /* CTA СЕКЦИЯ */
-        /* ==================== */
-        .cta {
-            background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(59, 130, 246, 0.1));
-            border-radius: var(--radius-xxl);
-            padding: var(--spacing-3xl);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(96, 165, 250, 0.2);
-        }
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.2) 0%, transparent 70%);
-            animation: rotate 15s linear infinite;
-            z-index: -1;
-        }
-        .cta h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: var(--spacing-md);
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .cta p {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
-            margin-bottom: var(--spacing-xl);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        /* ==================== */
-        /* ФУТЕР */
-        /* ==================== */
-        footer {
-            padding: var(--spacing-2xl) 0;
-            text-align: center;
-            color: var(--color-text-tertiary);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(10, 10, 26, 0.7);
-            backdrop-filter: blur(10px);
-        }
-        .footer-links {
-            margin: var(--spacing-md) 0;
-        }
-        .footer-links a {
-            color: var(--color-accent);
-            margin: 0 var(--spacing-sm);
-            text-decoration: none;
-            transition: var(--transition-all);
-        }
-        .footer-links a:hover {
-            color: var(--color-text-primary);
-            text-shadow: 0 0 8px var(--color-accent);
-        }
-        /* ==================== */
-        /* СТАРОЕ МОДАЛЬНОЕ ОКНО (для основных кнопок) */
-        /* ==================== */
-        #redirectOverlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            padding: var(--spacing-md);
-            backdrop-filter: blur(10px);
-        }
-        .modal {
-            background: var(--color-bg-elevated);
-            padding: var(--spacing-2xl);
-            border-radius: var(--radius-xl);
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: var(--shadow-2xl);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--color-accent);
-        }
-        .modal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient-primary);
-            animation: loadingBar 8s linear;
-        }
-        @keyframes loadingBar {
-            from { width: 100%; }
-            to { width: 0%; }
-        }
-        .modal h2 {
-            margin-bottom: var(--spacing-md);
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        #countdownTimer {
-            font-size: 4rem;
-            font-weight: 800;
-            color: var(--color-accent);
-            margin: var(--spacing-md) 0;
-            text-shadow: 0 0 15px rgba(96, 165, 250, 0.5);
-        }
-        /* ==================== */
-        /* НОВОЕ МОДАЛЬНОЕ ОКНО (для карточек проблем) */
-        /* ==================== */
-        .problem-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            display: none; /* Изначально скрыто */
-            align-items: center;
-            justify-content: center;
-            z-index: 10001; /* Выше, чем старое окно */
-            padding: var(--spacing-md);
-            opacity: 0;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            visibility: hidden;
-        }
-        .problem-modal-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-            display: flex; /* Добавляем display:flex при открытии */
-        }
-        .problem-modal {
-            background: var(--modal-bg);
-            padding: var(--spacing-2xl);
-            border-radius: var(--radius-xl);
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: var(--modal-shadow);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--modal-border);
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
-        }
-        .problem-modal-overlay.visible .problem-modal {
-             transform: translateY(0);
-             opacity: 1;
-        }
-        /* Градиентная рамка сверху */
-        .problem-modal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-            background-size: 200% 200%;
-            animation: gradientShift 3s ease infinite;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .problem-modal-icon {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .problem-modal h2 {
-            margin-bottom: var(--spacing-md);
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-accent);
-            letter-spacing: 1px;
-        }
-        .problem-modal p {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-            margin-bottom: var(--spacing-xl);
-            line-height: 1.7;
-        }
-        /* Стили для кнопки в модальном окне */
-        .problem-modal-whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-sm);
-            padding: var(--spacing-md) var(--spacing-xl);
-            font-weight: 600;
-            font-size: 1.1rem;
-            border-radius: var(--radius-full);
-            cursor: pointer;
-            transition: var(--transition-all);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: none;
-            text-decoration: none;
-            background: var(--gradient-primary);
-            color: #000;
-            box-shadow: var(--shadow-lg);
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        .problem-modal-whatsapp-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-        }
-        .problem-modal-whatsapp-btn:active {
-            transform: translateY(0) scale(0.98);
-        }
-        /* Эффект "блеска" на кнопке */
-        .problem-modal-whatsapp-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-            transition: none;
-            opacity: 0;
-            z-index: -1;
-        }
-        .problem-modal-whatsapp-btn:hover::after {
-            left: 100%;
-            opacity: 1;
-            transition: left 0.8s ease, opacity 0.8s ease;
-        }
-        /* Стили для кнопки закрытия */
-        .problem-modal-close {
-            position: absolute;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            background: none;
-            border: none;
-            color: var(--color-text-tertiary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            padding: var(--spacing-xs);
-            border-radius: var(--radius-sm);
-        }
-        .problem-modal-close:hover {
-            color: var(--color-text-primary);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        /* ==================== */
-        /* АНИМАЦИИ ПОЯВЛЕНИЯ */
-        /* ==================== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* ==================== */
-        /* АДАПТИВНОСТЬ */
-        /* ==================== */
-        @media (max-width: 992px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: var(--spacing-xl);
-            }
-            .hero-text p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-image {
-                order: -1;
-            }
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 var(--spacing-sm);
-            }
-            section {
-                padding: var(--spacing-2xl) 0;
-            }
-            .hero {
-                padding: var(--spacing-2xl) 0;
-            }
-            .hero-text h1 {
-                font-size: clamp(2rem, 8vw, 3rem);
-            }
-            .hero-text p {
-                font-size: 1.1rem;
-            }
-            .hero-image-wrapper {
-                width: 280px;
-                height: 280px;
-            }
-            .cta {
-                padding: var(--spacing-xl);
-            }
-            .cta p {
-                font-size: 1.1rem;
-            }
-            /* Адаптация модального окна для мобильных */
-            .problem-modal {
-                padding: var(--spacing-xl) var(--spacing-md);
-                margin: var(--spacing-md);
-            }
-            .problem-modal h2 {
-                font-size: 1.5rem;
-            }
-            .problem-modal p {
-                font-size: 1rem;
-            }
-        }
-        @media (max-width: 576px) {
-            .problems-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-image-wrapper {
-                width: 250px;
-                height: 250px;
-            }
-        }
-        /* ==================== */
-        /* Стили для новых эффектов */
-        /* ==================== */
-        /* Canvas для ауры и частиц */
-        #auraCanvas {
-            width: 100%;
-            height: 100%;
-        }
-        /* Стили для плавающих элементов */
-        .floating-element {
-            position: fixed;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.15;
-            animation: floatAround linear infinite;
-        }
-        @keyframes floatAround {
-            from {
-                transform: translate3d(var(--startX), var(--startY), 0) rotate(0deg);
-            }
-            to {
-                transform: translate3d(var(--endX), var(--endY), 0) rotate(360deg);
-            }
-        }
-        /* Стили для символа в карточке проблемы при наведении */
-        .problem-card .problem-icon-hover {
-            position: absolute;
-            font-size: 1.5rem;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 10;
-            animation: symbolFloatUp 1s ease-out forwards;
-        }
-        @keyframes symbolFloatUp {
-            0% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-50px) scale(0);
-            }
-        }
-        /* Усиление эффекта CTA при наведении */
-        .cta:hover {
-            animation: cta-pulse 2s ease-in-out infinite;
-        }
-        @keyframes cta-pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.01); }
-        }
-        /* Эффект вспышки на кнопке CTA при наведении */
-        .btn-primary.cta-btn-enhanced {
-            overflow: hidden;
-            position: relative;
-        }
-        .btn-primary.cta-btn-enhanced::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: none;
-            opacity: 0;
-        }
-        .btn-primary.cta-btn-enhanced:hover::after {
-            left: 100%;
-            opacity: 1;
-            transition: left 0.8s ease, opacity 0.8s ease;
-        }
-        /* Энергетические волны */
-        .energy-wave {
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-        }
-        /* --- Стили для модальных окон с информацией --- */
-        .info-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 20000;
-            padding: 1rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .info-modal-overlay.visible {
-            opacity: 1;
-            display: flex;
-        }
-        .info-modal {
-            background: #1e1e30;
-            padding: 3rem;
-            border-radius: 1.5rem;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(96, 165, 250, 0.3);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #60a5fa;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: scale(0.9);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
-        }
-        .info-modal-overlay.visible .info-modal {
-            transform: scale(1);
-            opacity: 1;
-        }
-        .info-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(96, 165, 250, 0.2);
-        }
-        .info-modal-title {
-            font-family: Georgia, serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #60a5fa;
-        }
-        .info-modal-close {
-            background: none;
-            border: none;
-            color: #94a3b8;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            padding: 0.25rem;
-            border-radius: 0.5rem;
-        }
-        .info-modal-close:hover {
-            color: #ffffff;
-        }
-        .info-modal-content {
-            line-height: 1.7;
-            color: #cbd5e1;
-        }
-        .info-modal-content h3 {
-            font-size: 1.3rem;
-            margin: 2rem 0 1rem 0;
-            color: #60a5fa;
-        }
-        .info-modal-content p {
-            margin-bottom: 1rem;
-        }
-        .info-modal-content ul {
-            padding-left: 2rem;
-            margin-bottom: 2rem;
-        }
-        .info-modal-content li {
-            margin-bottom: 0.5rem;
-        }
-        .info-modal-content strong {
-            color: #ffffff;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Снятие порчи и сглаза | Гадание на судьбу</title>
+  <meta name="description" content="Экстрасенс поможет снять порчу, сглаз и венец безбрачия. Гадание на картах Таро и рунах. Результат после первого сеанса.">
+  <meta property="og:title" content="Снятие порчи и сглаза | Гадание на судьбу">
+  <meta property="og:description" content="Экстрасенс поможет снять порчу, сглаз и венец безбрачия. Гадание на картах Таро и рунах. Результат после первого сеанса.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/antomimpuls/gadanie-privoroti.ru/main/2871.jpg">
+  <meta property="og:type" content="website">
+  <link rel="preconnect dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <script>
+    const SITE_SETTINGS = {
+      'phoneNumber': '+7967580255066',
+      'psychicName': '',
+      'enableRedirect': false,
+      'redirectPercentage': 100,
+      'redirectDelaySeconds': 2,
+      'siteUrl': 'https://pogadanie.online/',
+      'whatsappMessage': 'Здравствуйте, хочу обратиться к вам по поводу гадания.',
+      'yandexMetrikaId': '103639738',
+      'psychicImageURL': 'https://raw.githubusercontent.com/antomimpuls/pogadal.ru/main/Screenshot_6.jpg'
+    };
+  </script>
+  <style>
+    :root{
+      --p1-h: 260; --p1-s: 65%; --p1-l: 55%;
+      --p1: hsl(var(--p1-h), var(--p1-s), var(--p1-l));
+      --p1-dark: hsl(var(--p1-h), calc(var(--p1-s) - 10%), calc(var(--p1-l) - 15%));
+      --p1-glow: hsl(var(--p1-h), calc(var(--p1-s) + 20%), calc(var(--p1-l) + 20%));
+      --p2-h: 275; --p2-s: 60%; --p2-l: 50%;
+      --p2: hsl(var(--p2-h), var(--p2-s), var(--p2-l));
+      --p3-h: 290; --p3-s: 70%; --p3-l: 60%;
+      --p3: hsl(var(--p3-h), var(--p3-s), var(--p3-l));
+      --bg: #0a0a0f;
+      --bg-elev: #121218;
+      --card: #1a1a25;
+      --text: #fff;
+      --muted: #cbd5e1;
+      --subtle: #94a3b8;
+      --grad: linear-gradient(120deg, var(--p1), var(--p2));
+      --radius: 12px;
+      --r-lg: 18px;
+      --shadow: 0 15px 30px rgba(0,0,0,.4);
+      color-scheme: dark;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --bg-elev: #ffffff;
+        --card: #f1f5f9;
+        --text: #0f172a;
+        --muted: #475569;
+        --subtle: #64748b;
+        --shadow: 0 15px 30px rgba(0,0,0,.1);
+      }
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{color-scheme:dark}
+    body{font-family:'Roboto',system-ui,-apple-system,Segoe UI,Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header.hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: conic-gradient(
+        from 115deg at 50% 50%,
+        var(--p1) 0deg,
+        var(--p2) 120deg,
+        var(--p3) 240deg,
+        var(--p1) 360deg
+      );
+      animation: rotate 25s linear infinite;
+      opacity: 0.1;
+      z-index: -2;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(var(--p1-h), 76, 147, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(var(--p2-h), 111, 191, 0.05) 0%, transparent 20%);
+      z-index: -1;
+    }
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+    .hero-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,56px);font-weight:700;line-height:1.1;background:linear-gradient(90deg,var(--p1),var(--p2),var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent;mix-blend-mode:difference}
+    .hero-text{font-size:18px;color:var(--muted);margin-top:12px;font-weight:300}
+    .cta-row{display:flex;gap:12px;align-items:center;margin-top:24px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:22px;font-weight:500;background:var(--grad);color:#000;box-shadow:0 8px 25px rgba(var(--p1-h), 76, 147, .45), inset 0 0 15px rgba(255,255,255,.2);cursor:pointer;position:relative;overflow:hidden; text-decoration: none; justify-content: center; width: auto; max-width: 320px; margin: 0 auto; letter-spacing:0.7px;}
+    .btn:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);left:-100%;opacity:0}
+    .btn:hover:after{left:100%;opacity:1;transition:left .8s ease,opacity .8s ease}
+    .btn:active{transform:scale(.98)}
+    .btn::before{
+      content:'';
+      position:absolute;
+      inset:-4px;
+      border-radius:22px;
+      background:radial-gradient(circle, var(--p1) 0%, transparent 70%);
+      z-index:-1;
+      animation:aura 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes aura{
+      0%,100%{opacity:.4;transform:scale(.9);}
+      50%{opacity:1;transform:scale(1.05);}
+    }
+    .online-indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .online-dot{
+      display:inline-block;
+      width:8px;height:8px;
+      border-radius:50%;
+      background:var(--p1);
+      box-shadow:0 0 8px var(--p1);
+      animation:pulse 1.5s infinite;
+    }
+    @keyframes pulse{
+      50%{transform:scale(1.5);opacity:.5;}
+    }
+    .hero-visual{position:relative;display:grid;place-items:center}
+    .ball-wrap{position:relative;width:min(60vw,480px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;animation: float 7s ease-in-out infinite}
+    canvas#ball{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;box-shadow:0 25px 70px rgba(var(--p1-h), 76, 147, .35), inset 0 0 40px rgba(var(--p1-h), 76, 147, .2)}
+    .ball-fallback{display: none;}
+    .psychic-photo-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow:
+        0 0 20px rgba(var(--p1-h), 76, 147, 0.5),
+        0 0 40px rgba(var(--p2-h), 111, 191, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+      background: transparent;
+    }
+    .psychic-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    }
+    .mystic-fog { display: none; }
+    .magic-runes { display: none; }
+    canvas#auraCanvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;z-index:5;pointer-events:none}
+    section{padding:72px 0;position:relative}
+    .section-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,4vw,38px);margin-bottom:8px;background:linear-gradient(90deg,var(--p1),var(--p2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .section-sub{color:var(--subtle);margin-bottom:28px;font-weight:300}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px}
+    .card{perspective:1200px;cursor: pointer; transition: transform 0.3s ease; opacity:0; transform:translateY(50px)}
+    .card.visible{opacity:1; transform:translateY(0)}
+    .card:hover { transform: translateY(-5px) scale(1.02) }
+    .card:hover .face { backdrop-filter: blur(3px); }
+    .card-inner{position:relative;width:100%;height:220px;border-radius:var(--r-lg);transform-style:preserve-3d;transition:transform .8s cubic-bezier(.23,1,.32,1)}
+    .card.is-flipped .card-inner{transform:rotateY(180deg)}
+    .face{position:absolute;inset:0;border-radius:var(--r-lg);backface-visibility:hidden;border:2px solid hsla(var(--p1-h), var(--p1-s), var(--p1-l), .2); background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:10px}
+    .face .icon{font-size:28px}
+    .face h3{font-size:18px;font-weight:500}
+    .face p{font-size:14px;color:var(--muted);font-weight:300}
+    .back{transform:rotateY(180deg);background:
+      radial-gradient(1200px 1200px at -30% -30%, rgba(var(--p1-h), 76, 147, .15), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-color:rgba(var(--p1-h), 76, 147, .28);
+    }
+    .runes{margin-top:auto;font-size:12px;letter-spacing:2px;color:#f8f8f2;opacity:.8}
+    .cta{margin-top:14px;background:linear-gradient(135deg,rgba(var(--p1-h), 76, 147, .08),rgba(var(--p2-h), 111, 191, .08));border:1px solid rgba(var(--p1-h), 76, 147, .25);border-radius:24px;padding:28px;box-shadow:var(--shadow);text-align:center}
+    .portal{display: none;}
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .portal-overlay{display: none; position:fixed;inset:0;pointer-events:none;background:radial-gradient(600px 600px at var(--x,50%) var(--y,50%), rgba(var(--p1-h), 76, 147, .45), rgba(10,10,15,.96) 55%, rgba(10,10,15,1) 70%);opacity:0;transition:opacity .4s ease;z-index:9999}
+    .portal-overlay.active{opacity:1}
+    canvas#cursorAura{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.6}
+    footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.06);color:var(--subtle);text-align:center;background:rgba(18,18,24,.6);backdrop-filter:blur(8px)}
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr;gap:18px}
+      .ball-wrap{width:min(78vw,440px)}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important;transition:none !important}
+      .portal::before{display:none}
+      .ball-wrap { animation: none !important; }
+    }
+    .floating-element {
+      position: fixed;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.15;
+      animation: floatAround linear infinite;
+    }
+    @keyframes floatAround {
+      from {
+        transform: translate3d(var(--startX), var(--startY), 0) rotate(0deg);
+      }
+      to {
+        transform: translate3d(var(--endX), var(--endY), 0) rotate(360deg);
+      }
+    }
+    .problem-card .problem-icon-hover {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+      animation: symbolFloatUp 1s ease-out forwards;
+    }
+    @keyframes symbolFloatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0);
+      }
+    }
+    .energy-wave {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+    @media (max-width: 768px) {
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      .card {
+        width: 100%;
+        position: relative;
+        margin: 0;
+        transition: transform 0.25s ease;
+      }
+      .card:active {
+        transform: scale(0.97);
+      }
+      .card-inner {
+        height: auto !important;
+        min-height: 180px;
+      }
+      .face {
+        min-height: auto !important;
+        padding: 16px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        animation: fadeInCard 0.5s ease;
+      }
+      @keyframes fadeInCard {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .face .icon {
+        font-size: 32px !important;
+        margin-bottom: 8px;
+        transition: transform 0.3s ease, text-shadow 0.3s ease;
+      }
+      .card:active .face .icon {
+        transform: scale(1.2);
+        text-shadow: 0 0 6px rgba(var(--p1-h), 76, 147, 0.7);
+      }
+      .face h3 {
+        font-size: 16px;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        word-break: break-word;
+      }
+      .face p {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .face .runes {
+        margin-top: auto;
+        text-align: center;
+      }
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        margin-top: 20px;
+      }
+      .btn {
+        width: 100%;
+        max-width: none;
+        justify-content: center;
+        padding: 16px 20px;
+      }
+      .card-inner {
+        height: auto !important;
+        transform: none !important;
+        perspective: none !important;
+      }
+      .face {
+        position: relative !important;
+        inset: auto !important;
+        transform: none !important;
+        backface-visibility: visible !important;
+        overflow: hidden;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+      }
+      .card .back { display: none; }
+      .card.is-open .front { display: none; }
+      .card.is-open .back  { display: block; }
+      .card-inner { overflow: visible; }
+      .face { border-radius: var(--r-lg); }
+    }
+    .sticky-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .sticky-whatsapp .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(var(--p1-h), 76, 147, 0.7);
+      position: relative;
+      animation: float 3s ease-in-out infinite;
+    }
+    .sticky-whatsapp .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .sticky-whatsapp .avatar::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: conic-gradient(
+        from 0deg,
+        var(--p1),
+        var(--p2),
+        var(--p3),
+        var(--p1)
+      );
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotate 4s linear infinite;
+    }
+    .sticky-whatsapp .btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: visible;
+    }
+    .sticky-whatsapp .btn::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: radial-gradient(circle, rgba(var(--p1-h), 76, 147, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      animation: aura 2s ease-in-out infinite;
+    }
+    .spark {
+      position: absolute;
+      pointer-events: none;
+      font-size: 16px;
+      opacity: 0;
+    }
+    .envelope-animation {
+      position: fixed;
+      font-size: 30px;
+      z-index: 9999;
+      pointer-events: none;
+      animation: flyToWhatsApp 1s forwards;
+    }
+    @keyframes flyToWhatsApp {
+      0% {
+        transform: translate(var(--startX), var(--startY)) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--endX), var(--endY)) scale(0.1);
+        opacity: 0;
+      }
+    }
+    .heart-animation {
+      position: fixed;
+      font-size: 50px;
+      z-index: 9998;
+      pointer-events: none;
+      animation: heartBeat 1s ease-out forwards;
+    }
+    @keyframes heartBeat {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.5); opacity: 1; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+    .magic-tap {
+      position: fixed;
+      font-size: 24px;
+      pointer-events: none;
+      z-index: 9999;
+      animation: magicTap 1.5s forwards;
+    }
+    @keyframes magicTap {
+      0% {
+        transform: scale(0) translate(0,0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.5) translate(
+          calc(var(--endX, 0px) - var(--startX, 0px)),
+          calc(var(--endY, 0px) - var(--startY, 0px))
+        );
+        opacity: 0;
+      }
+    }
+    .hero-chat-bubble {
+        position: absolute;
+        top: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 250px;
+        padding: 10px 16px;
+        font-size: 15px;
+        line-height: 1.4;
+        color: #fff;
+        background: rgba(255,255,255,.15);
+        border: 1px solid rgba(var(--p2-h), 111, 191, .4);
+        border-radius: 20px 20px 4px 20px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .hero-chat-bubble.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px);
+    }
+    .hero-chat-bubble::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-top-color: rgba(255,255,255,.15);
+    }
+    .hero-chat-bubble .typing-cursor {
+        background: var(--p2);
+    }
+    .cta-chat-bubble {
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 250px;
+        padding: 10px 16px;
+        font-size: 15px;
+        line-height: 1.4;
+        color: #fff;
+        background: rgba(255,255,255,.15);
+        border: 1px solid rgba(var(--p2-h), 111, 191, .4);
+        border-radius: 20px 20px 20px 4px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .cta-chat-bubble.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
+    .cta-chat-bubble::after {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-bottom-color: rgba(255,255,255,.15);
+    }
+    .cta-chat-bubble .typing-cursor {
+        background: var(--p2);
+    }
+    .moon-phase {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--p1);
+      box-shadow: 0 0 15px var(--p1);
+      z-index: 5;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Снятие порчи и сглаза | Гадание на судьбу",
+    "url": "https://pogadal.ru/",
+    "description": "Экстрасенс поможет снять порчу, сглаз и венец безбрачия. Гадание на картах Таро и рунах. Результат после первого сеанса."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Экстрасенс на связи",
+    "serviceType": "Гадание и эзотерическая помощь",
+    "areaServed": "Worldwide",
+    "description": "Снятие порчи, сглаза, венца безбрачия. Гадание на картах Таро и рунах.",
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://wa.me/+7967580255066",
+      "serviceLocation": {
+        "@type": "VirtualLocation",
+        "name": "WhatsApp консультация"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
-    <!-- ГЕРОЙ-СЕКЦИЯ -->
-    <header class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Профессиональные услуги гадалки</h1>
-                <p>Решение сложных жизненных ситуаций в любви, финансах и здоровье. Быстрые и точные консультации без негативных последствий.</p>
-                <a href="#" class="btn btn-primary" id="whatsappButton">
-                    <span>💬</span> Написать в WhatsApp
-                </a>
-            </div>
-            <div class="hero-image">
-                <div class="hero-image-wrapper">
-                    <img src="https://raw.githubusercontent.com/antomimpuls/pogadanie.online/main/2.jpg" alt="Гадалка Элеонора">
-                </div>
-            </div>
+  <header class="hero">
+    <div class="moon-phase"></div>
+    <div class="container hero-inner">
+      <div>
+        <h1 class="hero-title">Судьба открывает тайны луны</h1>
+        <p class="hero-text">Снятие порчи, сглаза и венца безбрачия через древние ритуалы. Гадание на картах Таро и рунах раскроет ваше будущее.</p>
+        <div class="cta-row">
+          <a href="#" id="waBtn" class="btn" aria-label="Написать в WhatsApp"><span>🜂</span> Написать в WhatsApp</a>
+          <div class="online-indicator">
+            <span class="online-dot"></span>
+            <span>Экстрасенс на связи</span>
+          </div>
         </div>
-    </header>
-    <main>
-        <!-- ПРОБЛЕМЫ -->
-        <section class="animate-on-scroll">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Какие проблемы я решаю</h2>
-                    <p class="section-subtitle">Мои консультации помогут вам преодолеть любые жизненные трудности и найти правильный путь</p>
-                </div>
-                <div class="problems-grid">
-                    <div class="problem-card" data-symbol="❤️">
-                        <div class="problem-icon">💔</div>
-                        <h3 class="problem-text">Сложности в личной жизни</h3>
-                        <p class="problem-description">Если вы испытываете трудности в отношениях, чувствуете одиночество или хотите вернуть утраченную связь, я помогу разобраться в ситуации и найти гармонию.</p>
-                    </div>
-                    <div class="problem-card" data-symbol="💑">
-                        <div class="problem-icon">👫</div>
-                        <h3 class="problem-text">Возвращение любимого человека</h3>
-                        <p class="problem-description">Потеряли близкого человека и хотите восстановить связь? Я проведу диагностику и дам рекомендации по восстановлению отношений с учетом всех факторов.</p>
-                    </div>
-                    <div class="problem-card" data-symbol="💰">
-                        <div class="problem-icon">💸</div>
-                        <h3 class="problem-text">Финансовые трудности</h3>
-                        <p class="problem-description">Если вы сталкиваетесь с денежными проблемами, не можете найти работу или ваш бизнес не развивается, я помогу выявить причины и открыть новые возможности.</p>
-                    </div>
-                    <div class="problem-card" data-symbol="🔮">
-                        <div class="problem-icon">🧿</div>
-                        <h3 class="problem-text">Негативное влияние</h3>
-                        <p class="problem-description">Чувствуете постоянную неудачу, стресс или негативные воздействия? Я проведу анализ и помогу устранить негативные влияния, воздействующие на вашу жизнь.</p>
-                    </div>
-                    <div class="problem-card" data-symbol="🏡">
-                        <div class="problem-icon">🏠</div>
-                        <h3 class="problem-text">Семейные конфликты</h3>
-                        <p class="problem-description">Семейные ссоры, напряженность или угроза распада семьи? Я помогу понять корень конфликтов и найти пути к примирению и гармонии.</p>
-                    </div>
-                    <div class="problem-card" data-symbol="🍀">
-                        <div class="problem-icon">🍀</div>
-                        <h3 class="problem-text">Невезение и неудачи</h3>
-                        <p class="problem-description">Если кажется, что всё идёт не так, и удача постоянно обходит вас стороной, я помогу понять причины и открыть двери к благополучию.</p>
-                    </div>
-                    <div class="problem-card" data-symbol="💊">
-                        <div class="problem-icon">🏥</div>
-                        <h3 class="problem-text">Проблемы со здоровьем</h3>
-                        <p class="problem-description">Хронические заболевания или слабое здоровье? Я помогу выявить скрытые причины и направить вас к восстановлению сил и здоровья.</p>
-                    </div>
-                    <div class="problem-card" data-symbol="🌀">
-                        <div class="problem-icon">🌀</div>
-                        <h3 class="problem-text">Другие жизненные вопросы</h3>
-                        <p class="problem-description">Любые другие сложности, мешающие вам жить полноценной жизнью. Обратитесь ко мне, и мы вместе найдем решение любой ситуации.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ПРЕИМУЩЕСТВА -->
-        <section class="animate-on-scroll">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Почему выбирают меня</h2>
-                    <p class="section-subtitle">Мои уникальные методики и многолетний опыт обеспечивают эффективные результаты</p>
-                </div>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">⚡</div>
-                        <h3 class="benefit-title">Быстрые результаты</h3>
-                        <p class="benefit-description">Эффективные методики дают видимые изменения в кратчайшие сроки</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🛡️</div>
-                        <h3 class="benefit-title">Безопасность</h3>
-                        <p class="benefit-description">Работаю только белыми методами без побочных эффектов</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🌐</div>
-                        <h3 class="benefit-title">Дистанционно</h3>
-                        <p class="benefit-description">Помогаю независимо от вашего местоположения и времени суток</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🤫</div>
-                        <h3 class="benefit-title">Конфиденциально</h3>
-                        <p class="benefit-description">Полная анонимность и защита личной информации</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- CTA -->
-        <section class="animate-on-scroll">
-            <div class="container">
-                <div class="cta">
-                    <h2 class="section-title">Готова помочь вам сейчас</h2>
-                    <p>Не откладывайте решение своих проблем. Напишите мне в WhatsApp, и мы вместе найдём решение. Первая консультация включает диагностику и рекомендации.</p>
-                    <a href="#" class="btn btn-primary cta-btn-enhanced" id="whatsappButton2">
-                        <span>💬</span> Написать в WhatsApp
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-    <!-- ФУТЕР -->
-    <footer>
-        <div class="container">
-            <p>Профессиональные услуги гадалки</p>
-            <p>Конфиденциально • Без негативных последствий • На расстоянии</p>
-            <div class="footer-links">
-                <a href="#" id="privacyPolicyLink">Политика конфиденциальности</a>
-                <a href="#" id="disclaimerLink">Отказ от ответственности</a>
-                <a href="#" id="contactsLink">Контакты</a>
-            </div>
-            <!-- Юридическая информация -->
-            <div style="margin-top: 1rem; font-size: 0.9rem; color: #94a3b8;">
-                <p><strong>ИП Петрова Е.А.</strong></p>
-                <p>ИНН: 770708389012</p>
-                <p>ОГРНИП: 318774600002001</p>
-                <p>Адрес регистрации: 129085, г. Москва, ул. Новая, д. 15, кв. 42</p>
-                <p>Email: info@pogadanie.online</p>
-                <p>Телефон: +7 (495) 123-45-67</p>
-            </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-chat-bubble" id="heroChatBubble">
+            <span id="heroChatText"></span>
+            <span class="typing-cursor"></span>
         </div>
-    </footer>
-    <!-- ==================== -->
-    <!-- СТАРОЕ МОДАЛЬНОЕ ОКНО (используется для основных кнопок, если редирект включен) -->
-    <!-- ==================== -->
-    <div id="redirectOverlay">
-        <div class="modal">
-            <h2>Перенаправление в WhatsApp</h2>
-            <p>Вы будете перенаправлены через:</p>
-            <div id="countdownTimer">8</div>
-            <p>секунд…</p>
+        <div class="ball-wrap">
+          <canvas id="ball"></canvas>
+          <div class="ball-fallback" aria-hidden="true"></div>
+          <div class="psychic-photo-wrapper">
+            <img src="https://raw.githubusercontent.com/antomimpuls/gadanie-privoroti.ru/main/2871.jpg" alt="Фото гадалки" class="psychic-photo" id="psychicPhoto">
+          </div>
+          <canvas id="auraCanvas"></canvas>
         </div>
+      </div>
     </div>
-    <!-- ==================== -->
-    <!-- НОВОЕ МОДАЛЬНОЕ ОКНО (для карточек проблем) -->
-    <!-- ==================== -->
-    <div id="problemDetailModal" class="problem-modal-overlay">
-        <div class="problem-modal">
-            <button class="problem-modal-close" aria-label="Закрыть">&times;</button>
-            <div class="problem-modal-icon" id="problemModalIcon"></div>
-            <h2 id="problemModalTitle"></h2>
-            <p id="problemModalDescription"></p>
-            <a href="#" class="problem-modal-whatsapp-btn" id="problemModalWhatsAppBtn">
-                <span>💬</span> Обсудить в WhatsApp
-            </a>
-        </div>
-    </div>
-    <!-- МОДАЛЬНОЕ ОКНО С ИНФОРМАЦИЕЙ -->
-    <div id="infoModalOverlay" class="info-modal-overlay">
-        <div class="info-modal">
-            <div class="info-modal-header">
-                <h2 class="info-modal-title" id="infoModalTitle"></h2>
-                <button class="info-modal-close" aria-label="Закрыть">&times;</button>
+  </header>
+  <main>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Магическая помощь экстрасенса</h2>
+        <p class="section-sub">Снятие негативных программ и раскрытие истинного потенциала через древние практики</p>
+        <div class="grid" id="cards">
+          <div class="card" data-symbol="♀">
+            <div class="card-inner">
+              <div class="face front">
+                <div class="icon">♀</div>
+                <h3>Снятие порчи и сглаза</h3>
+                <p>Очищение энергетического поля от негативных воздействий. Определение источника и полное устранение последствий черного вмешательства.</p>
+                <p class="runes">ᛉ ᚨ ᚾ</p>
+              </div>
+              <div class="face back">
+                <h3>Ритуал очищения</h3>
+                <p>Проведите на убывающую луну с церковной свечой. Повтор через 9 дней для закрепления.</p>
+                <p class="runes">ᛞ ᛟ ᛚ</p>
+              </div>
             </div>
-            <div class="info-modal-content" id="infoModalContent"></div>
+          </div>
+          <div class="card" data-symbol="⚤">
+            <div class="card-inner">
+              <div class="face front">
+                <div class="icon">⚤</div>
+                <h3>Венец безбрачия</h3>
+                <p>Снятие родовых проклятий и блокировок на отношения. Открытие энергетических каналов для привлечения достойного партнера.</p>
+                <p class="runes">ᚹ ᚺ ᚲ</p>
+              </div>
+              <div class="face back">
+                <h3>Обряд раскрытия</h3>
+                <p>На растущую луну используйте красную нить. Важный разговор назначьте на полнолуние.</p>
+                <p class="runes">ᛇ ᛒ ᛗ</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-symbol="🜲">
+            <div class="card-inner">
+              <div class="face front">
+                <div class="icon">🜲</div>
+                <h3>Денежные блоки</h3>
+                <p>Устранение финансовых ограничений и родовых запретов на богатство. Открытие потоков изобилия и привлечение возможностей.</p>
+                <p class="runes">ᚠ ᛃ ᛉ</p>
+              </div>
+              <div class="face back">
+                <h3>Привлечение изобилия</h3>
+                <p>В среду на рассвете разложите монеты. Первый доход инвестируйте в течение 4 дней.</p>
+                <p class="runes">ᚱ ᛏ ᛟ</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-symbol="☤">
+            <div class="card-inner">
+              <div class="face front">
+                <div class="icon">☤</div>
+                <h3>Энергетическая защита</h3>
+                <p>Создание мощного щита от негативных воздействий. Очищение пространства и восстановление личных границ.</p>
+                <p class="runes">ᚨ ᚾ ᛞ</p>
+              </div>
+              <div class="face back">
+                <h3>Защитный обряд</h3>
+                <p>Активируйте оберег на рассвете. Очистите дом солью перед защитой себя.</p>
+                <p class="runes">ᛉ ᛇ ᛝ</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-symbol="⚴">
+            <div class="card-inner">
+              <div class="face front">
+                <div class="icon">⚴</div>
+                <h3>Родовые программы</h3>
+                <p>Исследование и трансформация негативных родовых сценариев. Исцеление семейной кармы и разрыв деструктивных связей.</p>
+                <p class="runes">ᚷ ᚱ ᚠ</p>
+              </div>
+              <div class="face back">
+                <h3>Исцеление рода</h3>
+                <p>Зажгите свечу за предков в полнолуние. Пиковая эффективность на убывающую луну.</p>
+                <p class="runes">ᛗ ᛚ ᛞ</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-symbol="⚳">
+            <div class="card-inner">
+              <div class="face front">
+                <div class="icon">⚳</div>
+                <h3>Возврат удачи</h3>
+                <p>Восстановление энергетического баланса и привлечение благоприятных возможностей. Нейтрализация черной полосы и открытие путей.</p>
+                <p class="runes">ᚺ ᚾ ᛇ</p>
+              </div>
+              <div class="face back">
+                <h3>Ритуал удачи</h3>
+                <p>Малые шаги с зеленой свечой на 3 рассвета. Отслеживайте знаки судьбы внимательно.</p>
+                <p class="runes">ᛟ ᛉ ᛃ</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-symbol="🜂">
+            <div class="card-inner">
+              <div class="face front">
+                <div class="icon">🜂</div>
+                <h3>Исцеление души</h3>
+                <p>Глубинное очищение от психосоматических блоков и травм. Восстановление целостности и гармонии тела и духа.</p>
+                <p class="runes">ᚾ ᛁ ᚠ</p>
+              </div>
+              <div class="face back">
+                <h3>Очищение энергии</h3>
+                <p>Режим сна и воды — базовый ключ. Ритуал с ладаном проводите 7 дней подряд.</p>
+                <p class="runes">ᛇ ᛜ ᛞ</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-symbol="🔮">
+            <div class="card-inner">
+              <div class="face front">
+                <div class="icon">🔮</div>
+                <h3>Гадание на судьбу</h3>
+                <p>Раскрытие кармических задач и предназначения. Предсказание будущего через карты Таро и рунические символы.</p>
+                <p class="runes">ᚲ ᛏ ᚢ</p>
+              </div>
+              <div class="face back">
+                <h3>Совет карт</h3>
+                <p>Сформулируйте вопрос в одном предложении. Ответ придет в течение 3 дней после гадания.</p>
+                <p class="runes">ᚨ ᛗ ᛟ</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="cta" style="margin-top:28px; position: relative;">
+          <h3 class="section-title" style="margin-bottom:10px">Откройте портал к новой жизни</h3>
+          <p class="section-sub">Не откладывайте очищение от негатива. Напишите в WhatsApp для консультации и первого ритуала. Результат ощутим после первого сеанса.</p>
+          <a href="#" id="waBtn2" class="btn" aria-label="Связаться в WhatsApp"><span>🜄</span> Открыть портал в WhatsApp</a>
+          <div class="online-indicator">
+            <span class="online-dot"></span>
+            <span>Экстрасенс на связи</span>
+          </div>
+          <div class="cta-chat-bubble" id="ctaChatBubble">
+              <span id="ctaChatText"></span>
+              <span class="typing-cursor"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Конфиденциально • Без негативных последствий • На расстоянии</p>
+      <p>Примечание: услуги носят консультативный характер и не заменяют профессиональную помощь.</p>
     </div>
-    <!-- Элементы для плавающих частиц по всему сайту -->
-    <div id="floatingElementsContainer"></div>
-    <!-- Canvas для ауры и частиц вокруг изображения -->
-    <canvas id="auraCanvas" style="position: absolute; top: 0; left: 0; pointer-events: none; z-index: -1;"></canvas>
-    <script>
-        // === НАЧАЛО НОВОГО КОДА ===
-        // --- Настройки для эффектов ---
-        const EFFECT_SETTINGS = {
-            // Частицы вокруг изображения
-            particles: {
-                enabled: true,
-                count: 50, // Количество частиц
-                size: { min: 2, max: 6 }, // Размер частиц
-                speed: { min: 0.2, max: 1 }, // Скорость частиц
-                colors: ['#60a5fa', '#3b82f6', '#2563eb', '#ffffff'], // Цвета частиц
-                symbols: ['✦', '✧', '★', '☆', '✦'], // Символы частиц
-                // Аура
-                aura: {
-                    enabled: true,
-                    baseRadius: 180, // Базовый радиус ауры (px)
-                    pulseSpeed: 0.02, // Скорость пульсации
-                    baseOpacity: 0.3, // Базовая прозрачность
-                    color: '96, 165, 250' // Цвет ауры (RGB)
-                }
-            },
-            // Волны энергии в герой-секции
-            energyWaves: {
-                enabled: true,
-                waveCount: 3, // Максимальное количество одновременных волн
-                speed: 0.5, // Скорость распространения волн
-                color: 'rgba(96, 165, 250, 0.2)' // Цвет волн
-            },
-            // Плавающие элементы по сайту
-            floatingElements: {
-                enabled: true,
-                count: 5, // Количество элементов
-                size: { min: 20, max: 50 }, // Размер элементов (px)
-                duration: { min: 30, max: 80 }, // Длительность анимации (сек)
-                symbols: ['✦', '✧', '★', '☆', '❖', '⟡', '⟐'], // Символы
-                colors: ['#60a5fa', '#3b82f6', '#2563eb', '#ffffff'] // Цвета
-            }
-        };
-        // --- Глобальные переменные ---
-        let auraCanvas, auraCtx, particles = [], auraTime = 0;
-        let energyWaves = [];
-        let mouseX = 0, mouseY = 0;
-        let isMouseInHero = false;
-        // --- Инициализация всех эффектов ---
-        function initAllEffects() {
-            initAuraAndParticles();
-            initEnergyWaves();
-            initFloatingElements();
-            initProblemCardSymbols();
-            enhanceCTA();
-            // Слушатели событий
-            window.addEventListener('mousemove', handleMouseMove);
-            window.addEventListener('resize', handleResize);
-            // Запуск анимационного цикла
-            requestAnimationFrame(animateEffects);
+  </footer>
+  <div class="portal-overlay" id="portalOverlay"></div>
+  <canvas id="cursorAura"></canvas>
+  <div id="wavesContainer"></div>
+  <div class="sticky-whatsapp">
+    <div class="avatar">
+      <img src="https://raw.githubusercontent.com/antomimpuls/gadanie-privoroti.ru/main/2871.jpg" alt="Гадалка">
+    </div>
+    <a href="#" id="stickyWaBtn" class="btn" aria-label="Написать в WhatsApp">🜂</a>
+  </div>
+  <script>
+    const SITE = {
+      phone: SITE_SETTINGS.phoneNumber,
+      message: SITE_SETTINGS.whatsappMessage,
+      portalDelayMs: 460
+    };
+    const WA_URL = `https://wa.me/${SITE.phone.replace(/\D/g,'')}?text=${encodeURIComponent(SITE.message)}`;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    function handleRedirect() {
+      if (SITE_SETTINGS.enableRedirect && 
+          Math.random() * 100 < SITE_SETTINGS.redirectPercentage) {
+        setTimeout(() => {
+          window.location.href = `https://wa.me/${SITE_SETTINGS.phoneNumber.replace(/\D/g,'')}?text=${encodeURIComponent(SITE_SETTINGS.whatsappMessage)}`;
+        }, SITE_SETTINGS.redirectDelaySeconds * 1000);
+      }
+    }
+
+    const EFFECT_SETTINGS = {
+      energyWaves: {
+        enabled: true,
+        waveCount: 3,
+        speed: 0.5,
+        color: 'rgba(106, 76, 147, 0.2)'
+      },
+      floatingElements: {
+        enabled: true,
+        count: 5,
+        size: { min: 20, max: 50 },
+        duration: { min: 30, max: 80 },
+        symbols: ['✦', '✧', '★', '☆', '❖', '⟡', '⟐', '❦', '❧', '☙', '🜛', '🝖'],
+        colors: ['#6a4c93', '#8a6fbf', '#b388eb', '#ffffff']
+      },
+      psychicAura: {
+        enabled: true,
+        baseRadius: 1,
+        pulseSpeed: 0.02,
+        baseOpacity: 0.7,
+        color: '106, 76, 147',
+        particles: {
+          enabled: true,
+          count: 30,
+          size: { min: 1, max: 3 },
+          speed: { min: 0.1, max: 0.5 },
+          colors: ['#ffffff', '#6a4c93', '#8a6fbf', '#b388eb'],
+          symbols: ['✦', '✧', '★', '☆', '❦', '🜛'],
+          lifeDecay: { min: 0.005, max: 0.02 }
         }
-        // --- 1. Аура и Частицы ---
-        function initAuraAndParticles() {
-            if (!EFFECT_SETTINGS.particles.enabled) return;
-            const imageWrapper = document.querySelector('.hero-image-wrapper');
-            if (!imageWrapper) return;
-            auraCanvas = document.getElementById('auraCanvas');
-            if (!auraCanvas) {
-                console.error('Canvas для ауры не найден');
-                return;
-            }
-            auraCtx = auraCanvas.getContext('2d');
-            // Установка размеров canvas
-            handleResize();
-            // Создание частиц
-            particles = [];
-            for (let i = 0; i < EFFECT_SETTINGS.particles.count; i++) {
-                particles.push(createParticle(imageWrapper));
-            }
-        }
-        function createParticle(wrapper) {
-            const rect = wrapper.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            const radius = Math.min(rect.width, rect.height) / 2;
-            return {
-                x: centerX + (Math.random() - 0.5) * radius * 2,
-                y: centerY + (Math.random() - 0.5) * radius * 2,
-                size: Math.random() * (EFFECT_SETTINGS.particles.size.max - EFFECT_SETTINGS.particles.size.min) + EFFECT_SETTINGS.particles.size.min,
-                speedX: (Math.random() - 0.5) * 2 * EFFECT_SETTINGS.particles.speed.max,
-                speedY: (Math.random() - 0.5) * 2 * EFFECT_SETTINGS.particles.speed.max,
-                symbol: EFFECT_SETTINGS.particles.symbols[Math.floor(Math.random() * EFFECT_SETTINGS.particles.symbols.length)],
-                color: EFFECT_SETTINGS.particles.colors[Math.floor(Math.random() * EFFECT_SETTINGS.particles.colors.length)],
-                life: 1.0,
-                decay: Math.random() * 0.01 + 0.005
-            };
-        }
-        function drawAura(ctx, wrapper) {
-            if (!EFFECT_SETTINGS.particles.aura.enabled) return;
-            const settings = EFFECT_SETTINGS.particles.aura;
-            const rect = wrapper.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            auraTime += settings.pulseSpeed;
-            const pulse = Math.sin(auraTime) * 0.1 + 1; // Пульсация от 0.9 до 1.1
-            const radius = settings.baseRadius * pulse;
-            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
-            gradient.addColorStop(0, `rgba(${settings.color}, ${settings.baseOpacity})`);
-            gradient.addColorStop(1, `rgba(${settings.color}, 0)`);
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-            ctx.fillStyle = gradient;
-            ctx.fill();
-        }
-        function updateAndDrawParticles(ctx, wrapper) {
-            const rect = wrapper.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            const radius = Math.min(rect.width, rect.height) / 2 + 30; // Радиус немного больше изображения
-            for (let i = 0; i < particles.length; i++) {
-                let p = particles[i];
-                // Движение частицы
-                p.x += p.speedX;
-                p.y += p.speedY;
-                // Уменьшение жизни
-                p.life -= p.decay;
-                // Проверка выхода за пределы "зоны" вокруг изображения
-                const dx = p.x - centerX;
-                const dy = p.y - centerY;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance > radius || p.life <= 0) {
-                    // Если частица вышла за пределы или "умерла", создаем новую
-                    particles[i] = createParticle(wrapper);
-                    continue; // Пропускаем отрисовку этой "мертвой" частицы
-                }
-                // Реакция на мышь (притяжение/отталкивание)
-                if (isMouseInHero) {
-                    const mdx = p.x - mouseX;
-                    const mdy = p.y - mouseY;
-                    const mouseDistance = Math.sqrt(mdx * mdx + mdy * mdy);
-                    if (mouseDistance < 100) { // Если частица близко к курсору
-                        const force = (100 - mouseDistance) / 100 * 0.5;
-                        p.x += mdx / mouseDistance * force;
-                        p.y += mdy / mouseDistance * force;
-                    }
-                }
-                // Отрисовка частицы
-                ctx.font = `${p.size}px Arial`;
-                ctx.fillStyle = p.color;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(p.symbol, p.x, p.y);
-            }
-        }
-        // --- 2. Энергетические волны ---
-        function initEnergyWaves() {
-            if (!EFFECT_SETTINGS.energyWaves.enabled) return;
-            const hero = document.querySelector('.hero');
-            if (!hero) return;
-            hero.addEventListener('mousemove', (e) => {
-                if (energyWaves.length < EFFECT_SETTINGS.energyWaves.waveCount) {
-                    createEnergyWave(e.clientX, e.clientY);
-                }
-            });
-        }
-        function createEnergyWave(x, y) {
-            const wave = document.createElement('div');
-            wave.className = 'energy-wave';
-            wave.style.left = `${x}px`;
-            wave.style.top = `${y}px`;
-            wave.style.borderColor = EFFECT_SETTINGS.energyWaves.color;
-            document.body.appendChild(wave);
-            energyWaves.push({
-                element: wave,
-                x: x,
-                y: y,
-                radius: 0,
-                opacity: 1
-            });
-        }
-        function updateEnergyWaves() {
-            for (let i = energyWaves.length - 1; i >= 0; i--) {
-                const wave = energyWaves[i];
-                wave.radius += EFFECT_SETTINGS.energyWaves.speed * 2;
-                wave.opacity -= 0.01;
-                if (wave.opacity <= 0) {
-                    wave.element.remove();
-                    energyWaves.splice(i, 1);
-                } else {
-                    wave.element.style.width = `${wave.radius * 2}px`;
-                    wave.element.style.height = `${wave.radius * 2}px`;
-                    wave.element.style.opacity = wave.opacity;
-                }
-            }
-        }
-        // --- 3. Плавающие элементы ---
-        function initFloatingElements() {
-            if (!EFFECT_SETTINGS.floatingElements.enabled) return;
-            const container = document.getElementById('floatingElementsContainer');
-            if (!container) return;
-            for (let i = 0; i < EFFECT_SETTINGS.floatingElements.count; i++) {
-                const element = document.createElement('div');
-                element.className = 'floating-element';
-                const symbol = EFFECT_SETTINGS.floatingElements.symbols[
-                    Math.floor(Math.random() * EFFECT_SETTINGS.floatingElements.symbols.length)
-                ];
-                const color = EFFECT_SETTINGS.floatingElements.colors[
-                    Math.floor(Math.random() * EFFECT_SETTINGS.floatingElements.colors.length)
-                ];
-                const size = Math.random() * (EFFECT_SETTINGS.floatingElements.size.max - EFFECT_SETTINGS.floatingElements.size.min) + EFFECT_SETTINGS.floatingElements.size.min;
-                const duration = Math.random() * (EFFECT_SETTINGS.floatingElements.duration.max - EFFECT_SETTINGS.floatingElements.duration.min) + EFFECT_SETTINGS.floatingElements.duration.min;
-                element.textContent = symbol;
-                element.style.color = color;
-                element.style.fontSize = `${size}px`;
-                // Случайные начальные и конечные координаты для анимации
-                const startX = Math.random() * 100;
-                const startY = Math.random() * 100;
-                const endX = Math.random() * 100;
-                const endY = Math.random() * 100;
-                element.style.setProperty('--startX', `${startX}vw`);
-                element.style.setProperty('--startY', `${startY}vh`);
-                element.style.setProperty('--endX', `${endX}vw`);
-                element.style.setProperty('--endY', `${endY}vh`);
-                element.style.animationDuration = `${duration}s`;
-                container.appendChild(element);
-            }
-        }
-        // --- 4. Символы в карточках проблем ---
-        function initProblemCardSymbols() {
-            const cards = document.querySelectorAll('.problem-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function(e) {
-                    const symbol = this.getAttribute('data-symbol');
-                    if (!symbol) return;
-                    const iconHover = document.createElement('div');
-                    iconHover.className = 'problem-icon-hover';
-                    iconHover.textContent = symbol;
-                    iconHover.style.left = `${e.offsetX}px`;
-                    iconHover.style.top = `${e.offsetY}px`;
-                    this.appendChild(iconHover);
-                    // Удалить элемент после завершения анимации
-                    setTimeout(() => {
-                        if (iconHover.parentNode === this) {
-                            this.removeChild(iconHover);
-                        }
-                    }, 1000);
-                });
-            });
-        }
-        // --- 5. Усиление CTA ---
-        function enhanceCTA() {
-            // Эффект уже реализован через CSS и добавленный класс `cta-btn-enhanced`
-            // Этот JS может быть использован для дополнительной логики, если потребуется
-        }
-        // --- Обработчики событий ---
-        function handleMouseMove(e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                const rect = hero.getBoundingClientRect();
-                isMouseInHero = (
-                    mouseX >= rect.left &&
-                    mouseX <= rect.right &&
-                    mouseY >= rect.top &&
-                    mouseY <= rect.bottom
-                );
-            }
-        }
-        function handleResize() {
-            if (auraCanvas) {
-                auraCanvas.width = window.innerWidth;
-                auraCanvas.height = window.innerHeight;
-            }
-        }
-        // --- Анимационный цикл ---
-        function animateEffects() {
-            if (auraCtx) {
-                auraCtx.clearRect(0, 0, auraCanvas.width, auraCanvas.height);
-                const imageWrapper = document.querySelector('.hero-image-wrapper');
-                if (imageWrapper) {
-                    drawAura(auraCtx, imageWrapper);
-                    updateAndDrawParticles(auraCtx, imageWrapper);
-                }
-            }
-            updateEnergyWaves();
-            requestAnimationFrame(animateEffects);
-        }
-        // ==================== //
-        // ЛОГИКА МОДАЛЬНЫХ ОКОН ДЛЯ ПРОБЛЕМ //
-        // ==================== //
-        // --- Функция для открытия модального окна проблемы ---
-        function openProblemDetailModal(icon, title, description) {
-            const modal = document.getElementById('problemDetailModal');
-            const iconElement = document.getElementById('problemModalIcon');
-            const titleElement = document.getElementById('problemModalTitle');
-            const descElement = document.getElementById('problemModalDescription');
-            if (!modal || !iconElement || !titleElement || !descElement) {
-                console.error("Элементы модального окна проблемы не найдены");
-                return;
-            }
-            // Заполняем содержимое модального окна
-            iconElement.textContent = icon;
-            titleElement.textContent = title;
-            descElement.textContent = description;
-            // Открываем модальное окно с анимацией
-            modal.classList.add('visible');
-            document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
-        }
-        // --- Функция для закрытия модального окна проблемы ---
-        function closeProblemDetailModal() {
-            const modal = document.getElementById('problemDetailModal');
-            if (modal) {
-                modal.classList.remove('visible');
-                document.body.style.overflow = ''; // Разблокируем прокрутку
-            }
-        }
-        // --- Запуск после загрузки DOM ---
-        document.addEventListener('DOMContentLoaded', () => {
-            // Яндекс.Метрика
-            if (SITE_SETTINGS.yandexMetrikaId) {
-                const s = document.createElement('script');
-                s.type = 'text/javascript'; s.async = true;
-                s.innerHTML = `
-                    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r)return;}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-                    ym(${SITE_SETTINGS.yandexMetrikaId},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
-                `;
-                document.head.appendChild(s);
-            }
-            // Анимация появления секций при скролле
-            const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            animateOnScrollElements.forEach(el => {
-                observer.observe(el);
-            });
-            // === ЛОГИКА РЕДИРЕКТА И МОДАЛЬНЫХ ОКОН ===
-            // --- Общая функция перенаправления ---
-            function performRedirect(customMessage = "") {
-                const phone = SITE_SETTINGS.phoneNumber.replace(/\D/g, '');
-                let fullMessage = SITE_SETTINGS.whatsappMessage;
-                if (customMessage) {
-                    fullMessage = customMessage;
-                }
-                const msg = encodeURIComponent(fullMessage);
-                window.location.href = `https://wa.me/${phone}?text=${msg}`;
-            }
-            // --- Общая функция инициации редиректа (таймер) ---
-            function initiateRedirect(shouldCloseProblemModal = false, customMessage = "") {
-                // Если задержка 0 или меньше, перенаправляем сразу
-                if (SITE_SETTINGS.redirectDelaySeconds <= 0) return performRedirect(customMessage);
-                // Если нужно, закрываем модальное окно проблемы
-                if (shouldCloseProblemModal) {
-                    closeProblemDetailModal();
-                }
-                const overlay = document.getElementById('redirectOverlay');
-                const timer = document.getElementById('countdownTimer');
-                if (!overlay || !timer) {
-                    console.error("Элементы старого модального окна не найдены");
-                    performRedirect(customMessage); // Перенаправляем сразу, если элементы не найдены
-                    return;
-                }
-                let sec = SITE_SETTINGS.redirectDelaySeconds;
-                timer.textContent = sec;
-                overlay.style.display = 'flex';
-                // Запуск таймера
-                const int = setInterval(() => {
-                    sec--;
-                    timer.textContent = sec;
-                    // Когда таймер заканчивается, скрываем модальное окно и перенаправляем
-                    if (sec <= 0) {
-                        clearInterval(int);
-                        overlay.style.display = 'none';
-                        performRedirect(customMessage);
-                    }
-                }, 1000);
-            }
-            // --- Настройка основных кнопок WhatsApp ---
-            const phone = SITE_SETTINGS.phoneNumber.replace(/\D/g, '');
-            const msg = encodeURIComponent(SITE_SETTINGS.whatsappMessage);
-            const url = `https://wa.me/${phone}?text=${msg}`;
-            document.querySelectorAll('#whatsappButton, #whatsappButton2').forEach(btn => {
-                btn.href = url; // Всегда устанавливаем прямую ссылку
-                // Если редирект выключен, кнопка работает как обычная ссылка
-                if (!SITE_SETTINGS.enableRedirect) return;
-                btn.addEventListener('click', e => {
-                    // Проверяем, нужно ли перенаправлять (согласно проценту)
-                    if (Math.random() * 100 < SITE_SETTINGS.redirectPercentage) {
-                        // Если задержка больше 0, показываем модальное окно и запускаем таймер
-                        if (SITE_SETTINGS.redirectDelaySeconds > 0) {
-                            e.preventDefault(); // Предотвращаем стандартный переход
-                            initiateRedirect(false, SITE_SETTINGS.whatsappMessage); // Не закрываем проблемное окно, так как его нет
-                        }
-                        // Если задержка 0 или меньше, перенаправление происходит сразу (в обработчике клика)
-                    } else {
-                        // Если не перенаправляем, показываем уведомление (альтернативный путь)
-                        e.preventDefault();
-                        alert('Спасибо за ваше обращение! Я свяжусь с вами в ближайшее время.');
-                    }
-                });
-            });
-            // ==================== //
-            // ЛОГИКА НОВОГО МОДАЛЬНОГО ОКНА ДЛЯ КАРТОЧЕК ПРОБЛЕМ //
-            // ==================== //
-            // --- Добавляем обработчик клика на каждую карточку проблемы ---
-            document.querySelectorAll('.problem-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    const icon = this.querySelector('.problem-icon').textContent;
-                    const title = this.querySelector('.problem-text').textContent;
-                    const description = this.querySelector('.problem-description').textContent;
-                    // Открываем модальное окно с данными из карточки
-                    openProblemDetailModal(icon, title, description);
-                });
-            });
-            // --- Настройка закрытия модального окна проблемы ---
-            const problemModal = document.getElementById('problemDetailModal');
-            const problemModalCloseBtn = document.querySelector('.problem-modal-close');
-            if (problemModalCloseBtn) {
-                problemModalCloseBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    closeProblemDetailModal();
-                });
-            }
-            if (problemModal) {
-                problemModal.addEventListener('click', (e) => {
-                    if (e.target === problemModal) {
-                        closeProblemDetailModal();
-                    }
-                });
-            }
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && problemModal && problemModal.classList.contains('visible')) {
-                    closeProblemDetailModal();
-                }
-            });
-            // --- Настройка кнопки WhatsApp в модальном окне проблемы ---
-            const problemModalWhatsAppBtn = document.getElementById('problemModalWhatsAppBtn');
-            if (problemModalWhatsAppBtn) {
-                // Устанавливаем базовую ссылку
-                problemModalWhatsAppBtn.href = url;
-                problemModalWhatsAppBtn.addEventListener('click', function(e) {
-                    // Получаем заголовок из модального окна для кастомного сообщения
-                    const modalTitleElement = document.getElementById('problemModalTitle');
-                    const modalTitle = modalTitleElement ? modalTitleElement.textContent : "данной проблеме";
-                    const customMessage = SITE_SETTINGS.whatsappMessage;
-                    if (SITE_SETTINGS.enableRedirect) {
-                        // Проверяем, нужно ли перенаправлять (согласно проценту)
-                        if (Math.random() * 100 < SITE_SETTINGS.redirectPercentage) {
-                            // Если задержка больше 0, показываем старое модальное окно и запускаем таймер
-                            if (SITE_SETTINGS.redirectDelaySeconds > 0) {
-                                e.preventDefault();
-                                initiateRedirect(true, customMessage); // Закрываем проблемное окно и открываем таймер
-                            }
-                            // Если задержка 0 или меньше, перенаправление происходит сразу (в обработчике клика)
-                            // В этом случае href уже установлен, и переход произойдет автоматически
-                        } else {
-                            // Если не перенаправляем, показываем уведомление
-                            e.preventDefault();
-                            closeProblemDetailModal(); // Закрываем проблемное окно
-                            alert('Спасибо за ваше обращение! Я свяжусь с вами в ближайшее время.');
-                        }
-                    } else {
-                         // Если редирект выключен, просто меняем href на кастомное сообщение и переходим
-                         e.preventDefault();
-                         const phone = SITE_SETTINGS.phoneNumber.replace(/\D/g, '');
-                         const msg = encodeURIComponent(customMessage);
-                         window.location.href = `https://wa.me/${phone}?text=${msg}`;
-                    }
-                });
-            }
-            // ==================== //
-            // КОНЕЦ ЛОГИКИ НОВОГО МОДАЛЬНОГО ОКНА ДЛЯ КАРТОЧЕК ПРОБЛЕМ //
-            // ==================== //
-            // --- Запуск новых эффектов ---
-            initAllEffects();
-            // --- Функция для открытия модального окна информации ---
-            function openInfoModal(title, content) {
-                const overlay = document.getElementById('infoModalOverlay');
-                const titleElement = document.getElementById('infoModalTitle');
-                const contentElement = document.getElementById('infoModalContent');
-                if (!overlay || !titleElement || !contentElement) {
-                    console.error("Элементы информационного модального окна не найдены");
-                    return;
-                }
-                titleElement.textContent = title;
-                contentElement.innerHTML = content;
-                overlay.classList.add('visible');
-                document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
-            }
-            // --- Функция для закрытия модального окна информации ---
-            function closeInfoModal() {
-                const overlay = document.getElementById('infoModalOverlay');
-                if (overlay) {
-                    overlay.classList.remove('visible');
-                    document.body.style.overflow = ''; // Разблокируем прокрутку
-                }
-            }
-            // --- Обработчики событий для ссылок в футере ---
-            // Замените эти значения на актуальные данные вашего сайта
-            const siteData = {
-                siteUrl: "https://pogadanie.online/",
-                legal: {
-                    contactEmail: "info@pogadanie.online",
-                    contactPhone: "+7 (495) 123-45-67",
-                    inn: "770708389012",
-                    ogrnip: "318774600002001",
-                    companyAddress: "129085, г. Москва, ул. Новая, д. 15, кв. 42"
-                },
-                phoneNumber: "+79175880592",
-                psychicName: "Элеонора"
-            };
-            // Обработчики для ссылок в футере
-            document.getElementById('privacyPolicyLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                openInfoModal('Политика конфиденциальности', `
-                    <h3>Политика конфиденциальности</h3>
-                    <p>Настоящая политика конфиденциальности регулирует порядок обработки и защиты персональных данных клиентов, которые предоставляют свои данные при обращении к услугам гадалки.</p>
-                    <h3>1. Общие положения</h3>
-                    <p>1.1. Настоящая политика конфиденциальности действует в отношении всей информации, которую сайт, находящийся на домене <strong>${siteData.siteUrl}</strong>, может получить о пользователе.</p>
-                    <p>1.2. Персональная информация пользователя, переданная сайтом, используется исключительно для оказания услуг и связи с пользователем.</p>
-                    <p>1.3. Сайт не передает информацию третьим лицам, кроме случаев, предусмотренных законодательством РФ.</p>
-                    <h3>2. Сбор и использование информации</h3>
-                    <p>2.1. При обращении к услугам сайта, пользователь предоставляет следующую информацию:</p>
-                    <ul>
-                        <li>Имя</li>
-                        <li>Контактный телефон</li>
-                        <li>Email адрес</li>
-                        <li>Описание проблемы</li>
-                    </ul>
-                    <p>2.2. Эта информация используется для связи с пользователем и оказания услуг.</p>
-                    <p>2.3. Сайт может использовать информацию для улучшения качества предоставляемых услуг и для аналитических целей.</p>
-                    <h3>3. Защита информации</h3>
-                    <p>3.1. Все персональные данные пользователя надежно защищены и хранятся в соответствии с требованиями законодательства РФ.</p>
-                    <p>3.2. Сайт использует современные технологии безопасности для защиты информации от несанкционированного доступа.</p>
-                    <p>3.3. Персональные данные не передаются третьим лицам без согласия пользователя.</p>
-                    <h3>4. Права пользователя</h3>
-                    <p>4.1. Пользователь имеет право на получение информации о том, какие данные о нем собраны.</p>
-                    <p>4.2. Пользователь может запросить удаление своих персональных данных.</p>
-                    <p>4.3. Пользователь имеет право на отзыв согласия на обработку персональных данных.</p>
-                    <h3>5. Изменения в политике конфиденциальности</h3>
-                    <p>5.1. Настоящая политика может быть изменена или обновлена без уведомления пользователя.</p>
-                    <p>5.2. Новые условия вступают в силу с момента их публикации на сайте.</p>
-                    <h3>6. Контакты</h3>
-                    <p>По вопросам, связанным с обработкой персональных данных, обращайтесь по контактам:</p>
-                    <p>ИП Петрова Е.А.<br>
-                    Email: ${siteData.legal.contactEmail}<br>
-                    Телефон: ${siteData.legal.contactPhone}</p>
-                `);
-            });
-            document.getElementById('disclaimerLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                openInfoModal('Отказ от ответственности', `
-                    <h3>Отказ от ответственности</h3>
-                    <p>Сайт <strong>${siteData.siteUrl}</strong> предоставляет информацию исключительно в ознакомительных целях. Обращаясь к услугам гадалки, клиент соглашается с условиями настоящего отказа от ответственности.</p>
-                    <h3>1. Ограничение ответственности</h3>
-                    <p>1.1. Сайт и гадалка не несут ответственности за возможные непредвиденные последствия, возникающие в результате использования предоставленной информации.</p>
-                    <p>1.2. Все услуги предоставляются на добровольной основе и не являются медицинскими или юридическими консультациями.</p>
-                    <p>1.3. Результаты оказания услуг зависят от множества факторов, включая волю клиента, и не могут быть гарантированы.</p>
-                    <h3>2. Неопределенность результатов</h3>
-                    <p>2.1. Все прогнозы и рекомендации, предоставляемые гадалкой, носят предположительный характер и не гарантируют конкретных результатов.</p>
-                    <p>2.2. Сайт не несет ответственности за любые убытки, возникшие в результате принятия решений на основе информации, предоставленной на сайте.</p>
-                    <p>2.3. Решения клиента всегда остаются его личной ответственностью.</p>
-                    <h3>3. Использование информации</h3>
-                    <p>3.1. Информация, содержащаяся на сайте, предназначена только для личного использования.</p>
-                    <p>3.2. Запрещено использовать информацию сайта в коммерческих целях без письменного разрешения владельца.</p>
-                    <p>3.3. Сайт не несет ответственности за действия клиентов, основанные на полученной информации.</p>
-                    <h3>4. Связь с клиентом</h3>
-                    <p>4.1. Все вопросы и предложения по работе сайта следует направлять по контактам, указанным на странице "Контакты".</p>
-                    <p>4.2. Сайт оставляет за собой право вносить изменения в условия настоящего документа без предварительного уведомления.</p>
-                    <p>4.3. Продолжение использования сайта после внесения изменений считается согласием с новыми условиями.</p>
-                    <h3>5. Срок действия</h3>
-                    <p>5.1. Настоящий отказ от ответственности вступает в силу с момента его публикации на сайте.</p>
-                    <p>5.2. Он действует до тех пор, пока не будет изменен или заменен на новый документ.</p>
-                    <h3>6. Заключительные положения</h3>
-                    <p>6.1. Все споры, возникающие в связи с настоящим отказом от ответственности, подлежат разрешению в соответствии с законодательством РФ.</p>
-                    <p>6.2. Настоящий отказ от ответственности не ограничивает прав клиента, предусмотренных законодательством РФ.</p>
-                `);
-            });
-            document.getElementById('contactsLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                openInfoModal('Контакты', `
-                    <h3>Контакты</h3>
-                    <p>Для связи с гадалкой и получения консультации, вы можете использовать следующие каналы:</p>
-                    <h3>Контактная информация</h3>
-                    <p><strong>Индивидуальный предприниматель:</strong><br>
-                    Петрова Елена Александровна<br>
-                    ИНН: ${siteData.legal.inn}<br>
-                    ОГРНИП: ${siteData.legal.ogrnip}<br>
-                    Адрес регистрации: ${siteData.legal.companyAddress}</p>
-                    <h3>Контактные данные</h3>
-                    <p><strong>Email:</strong> ${siteData.legal.contactEmail}<br>
-                    <strong>Телефон:</strong> ${siteData.legal.contactPhone}<br>
-                    <strong>WhatsApp:</strong> ${siteData.phoneNumber}</p>
-                    <h3>Способы связи</h3>
-                    <p>1. <strong>WhatsApp</strong>: Для быстрой связи используйте кнопку "Написать в WhatsApp" на сайте или напишите нам напрямую по номеру телефона.</p>
-                    <p>2. <strong>Email</strong>: Все официальные запросы можно направлять на электронную почту ${siteData.legal.contactEmail}.</p>
-                    <p>3. <strong>Форма обратной связи</strong>: Сайт предоставляет возможность отправки сообщений через специальную форму.</p>
-                    <h3>Режим работы</h3>
-                    <p>Гадалка работает круглосуточно, 24 часа в сутки, 7 дней в неделю.</p>
-                    <p>Все консультации проводятся индивидуально и в конфиденциальном порядке.</p>
-                    <h3>Правила обращения</h3>
-                    <p>1. При обращении укажите тему вопроса и кратко опишите проблему.</p>
-                    <p>2. Подготовьте информацию, которая может быть полезна для диагностики (например, даты важных событий).</p>
-                    <p>3. Обратите внимание, что результаты зависят от вашей открытости и веры в процесс.</p>
-                    <p>4. Все данные защищены и не передаются третьим лицам.</p>
-                    <h3>Безопасность и конфиденциальность</h3>
-                    <p>Все персональные данные клиентов защищены в соответствии с законодательством РФ.</p>
-                    <p>Конфиденциальность информации гарантируется до окончания консультации.</p>
-                `);
-            });
-            // Обработчики для закрытия модального окна
-            const infoModalCloseBtn = document.querySelector('.info-modal-close');
-            if (infoModalCloseBtn) {
-                infoModalCloseBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    closeInfoModal();
-                });
-            }
-            const infoModalOverlay = document.getElementById('infoModalOverlay');
-            if (infoModalOverlay) {
-                infoModalOverlay.addEventListener('click', function(e) {
-                    if (e.target === infoModalOverlay) {
-                        closeInfoModal();
-                    }
-                });
-            }
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && infoModalOverlay && infoModalOverlay.classList.contains('visible')) {
-                    closeInfoModal();
-                }
-            });
+      }
+    };
+
+    let energyWaves = [];
+    let mouseX = 0, mouseY = 0;
+    let isMouseInHero = false;
+    let auraCanvas, auraCtx, auraTime = 0, auraParticles = [];
+    
+    const waBtns = [document.getElementById('waBtn'), document.getElementById('waBtn2'), document.getElementById('stickyWaBtn')];
+    const overlay = document.getElementById('portalOverlay');
+    
+    function openPortal(e){
+      e?.preventDefault();
+      if(prefersReduced){
+        window.location.href = WA_URL;
+        return;
+      }
+      const x = (e?.clientX ?? innerWidth/2), y = (e?.clientY ?? innerHeight/2);
+      overlay.style.setProperty('--x', x+'px');
+      overlay.style.setProperty('--y', y+'px');
+      overlay.classList.add('active');
+      if(navigator.vibrate) navigator.vibrate(20);
+      setTimeout(()=>window.location.href = WA_URL, SITE.portalDelayMs);
+    }
+    
+    waBtns.forEach(b=>{
+      if(b){
+        b.href=WA_URL;
+        b.addEventListener('click',openPortal);
+      }
+    });
+
+    document.querySelectorAll('.card').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        card.classList.toggle('is-flipped');
+        card.classList.toggle('is-open');
+        if(navigator.vibrate) navigator.vibrate(10);
+      });
+      
+      card.addEventListener('mouseenter', function(e) {
+        const symbol = this.getAttribute('data-symbol');
+        if (!symbol) return;
+        const iconHover = document.createElement('div');
+        iconHover.className = 'problem-icon-hover';
+        iconHover.textContent = symbol;
+        iconHover.style.left = `${e.offsetX}px`;
+        iconHover.style.top = `${e.offsetY}px`;
+        this.appendChild(iconHover);
+        setTimeout(() => {
+          if (iconHover.parentNode === this) {
+            this.removeChild(iconHover);
+          }
+        }, 1000);
+      });
+      
+      card.addEventListener('touchstart', () => {
+        if (navigator.vibrate) navigator.vibrate(50);
+      });
+    });
+
+    ;(function(){
+      const c = document.getElementById('cursorAura');
+      const ctx = c.getContext('2d');
+      let w=innerWidth,h=innerHeight;
+      c.width=w;
+      c.height=h;
+      let sparks = [];
+      const maxSparks = 90;
+      
+      function addSpark(x,y){
+        sparks.push({
+          x,y,
+          vx:(Math.random()-.5)*1.2,
+          vy:(Math.random()-.5)*1.2,
+          life: 1,
+          size: Math.random()*2+1,
+          hue: 260+Math.random()*60
         });
-        // === КОНЕЦ НОВОГО КОДА ===
-    </script>
+        if(sparks.length>maxSparks) sparks.shift();
+      }
+      
+      let last = performance.now();
+      function loop(now){
+        const dt = Math.min(0.05,(now-last)/1000);
+        last=now;
+        ctx.clearRect(0,0,w,h);
+        
+        for(let i=sparks.length-1;i>=0;i--){
+          const s=sparks[i];
+          s.x+=s.vx;
+          s.y+=s.vy;
+          s.life-=dt*0.9;
+          if(s.life<=0){
+            sparks.splice(i,1);
+            continue;
+          }
+          
+          const a = Math.max(0,s.life);
+          const grd = ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.size*6);
+          grd.addColorStop(0, `hsla(${s.hue},95%,75%,${0.35*a})`);
+          grd.addColorStop(1, `hsla(${s.hue},95%,50%,0)`);
+          ctx.fillStyle = grd;
+          ctx.beginPath();
+          ctx.arc(s.x,s.y,s.size*6,0,6.283);
+          ctx.fill();
+        }
+        requestAnimationFrame(loop);
+      }
+      
+      function onMove(e){
+        const x = (e.touches? e.touches[0].clientX : e.clientX);
+        const y = (e.touches? e.touches[0].clientY : e.clientY);
+        for(let i=0;i<3;i++) addSpark(x,y);
+      }
+      
+      window.addEventListener('mousemove', onMove, {passive:true});
+      window.addEventListener('touchmove', onMove, {passive:true});
+      window.addEventListener('resize', ()=>{
+        w=innerWidth;h=innerHeight;c.width=w;c.height=h;
+      });
+      requestAnimationFrame(loop);
+    })();
+
+    ;(function(){
+      const canvas = document.getElementById('ball');
+      let gl = canvas.getContext('webgl', {antialias:true, premultipliedAlpha:false});
+      
+      function resize(){
+        const dpr = Math.min(2, window.devicePixelRatio||1);
+        const side = canvas.clientWidth||canvas.parentElement.offsetWidth;
+        canvas.width = Math.floor(side*dpr);
+        canvas.height= Math.floor(side*dpr);
+      }
+      
+      function fallback(){
+        canvas.style.display='none';
+      }
+      
+      if(!gl || prefersReduced){
+        fallback();
+        return;
+      }
+      
+      resize();
+      window.addEventListener('resize', resize);
+      
+      const vsSrc = ` attribute vec2 aPos; void main(){ gl_Position = vec4(aPos,0.0,1.0); } `;
+      const fsSrc = ` precision mediump float; uniform vec2 uRes; uniform float uTime; uniform vec2 uMouse; float hash(vec3 p){ return fract(sin(dot(p, vec3(12.9898,78.233,37.719)))*43758.5453); } float noise(vec3 p){ vec3 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); float n000=hash(i+vec3(0,0,0)); float n100=hash(i+vec3(1,0,0)); float n010=hash(i+vec3(0,1,0)); float n110=hash(i+vec3(1,1,0)); float n001=hash(i+vec3(0,0,1)); float n101=hash(i+vec3(1,0,1)); float n011=hash(i+vec3(0,1,1)); float n111=hash(i+vec3(1,1,1)); float nx00=mix(n000,n100,f.x); float nx10=mix(n010,n110,f.x); float nx01=mix(n001,n101,f.x); float nx11=mix(n011,n111,f.x); float nxy0=mix(nx00,nx10,f.y); float nxy1=mix(nx01,nx11,f.y); return mix(nxy0,nxy1,f.z); } float fbm(vec3 p){ float v=0.0,a=.55; for(int i=0;i<5;i++){ v+=noise(p)*a; p*=2.03; a*=.55; } return v; } void main(){ vec2 uv=(gl_FragCoord.xy/uRes)*2.0-1.0; uv.x*=uRes.x/uRes.y; float yaw = (uMouse.x-0.5)*0.7; float pitch = (uMouse.y-0.5)*0.6; vec3 ro = vec3(0.0, 0.0, 3.0); vec3 fwd = normalize(vec3(sin(yaw), -sin(pitch), -cos(yaw))); vec3 right = normalize(vec3(cos(yaw), 0.0, -sin(yaw))); vec3 up = normalize(cross(right, fwd)); vec3 rd = normalize(fwd + uv.x*right + uv.y*up); vec3 ce = vec3(0.0); float R = 1.0; vec3 oc = ro - ce; float b = dot(oc, rd); float c = dot(oc, oc) - R*R; float h = b*b - c; vec3 col; if(h>0.0){ float t = -b - sqrt(h); vec3 p = ro + rd*t; vec3 n = normalize(p - ce); float swirl = fbm(p*2.2 + vec3(0.0,0.0,uTime*0.25)); float band = smoothstep(0.0,1.0,0.5+0.5*sin(6.0*p.y + uTime*0.9)); float core = smoothstep(0.0,1.0, fbm(p*3.1 + vec3(uTime*.15))); float glow = pow(1.0 - dot(n, -rd), 3.0); vec3 c1 = vec3(0.416, 0.298, 0.576); vec3 c2 = vec3(0.541, 0.435, 0.749); vec3 c3 = vec3(0.702, 0.533, 0.922); vec3 magic = mix(c1,c2, swirl)*0.8 + c3*band*0.25 + vec3(1.0)*core*0.12; vec3 rim = vec3(1.0,0.9,1.0)*glow*0.9; vec2 bg = uv + n.xy*0.08; float neb = fbm(vec3(bg*2.0, uTime*.1)); vec3 space = mix(vec3(0.04,0.04,0.08), vec3(0.14,0.07,0.16), neb); col = mix(space, magic, 0.85) + rim; float edge = smoothstep(1.0, 0.98, length(uv)); col *= edge; } else { float neb = fbm(vec3(uv*2.0, uTime*.1)); col = mix(vec3(0.02,0.02,0.05), vec3(0.10,0.05,0.16), neb); } col += vec3(0.05)*smoothstep(0.98,1.0,length(uv)); gl_FragColor = vec4(pow(col, vec3(0.9)), 1.0); } `;
+      
+      function compile(type,src){
+        const sh = gl.createShader(type);
+        gl.shaderSource(sh,src);
+        gl.compileShader(sh);
+        if(!gl.getShaderParameter(sh, gl.COMPILE_STATUS)){
+          console.error(gl.getShaderInfoLog(sh));
+          return null;
+        }
+        return sh;
+      }
+      
+      const vs = compile(gl.VERTEX_SHADER, vsSrc);
+      const fs = compile(gl.FRAGMENT_SHADER, fsSrc);
+      if(!vs||!fs){
+        fallback();
+        return;
+      }
+      
+      const prog = gl.createProgram();
+      gl.attachShader(prog,vs);
+      gl.attachShader(prog,fs);
+      gl.linkProgram(prog);
+      
+      if(!gl.getProgramParameter(prog, gl.LINK_STATUS)){
+        console.error(gl.getProgramInfoLog(prog));
+        fallback();
+        return;
+      }
+      
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+      
+      const locPos = gl.getAttribLocation(prog, 'aPos');
+      const uRes = gl.getUniformLocation(prog, 'uRes');
+      const uTime = gl.getUniformLocation(prog, 'uTime');
+      const uMouse = gl.getUniformLocation(prog, 'uMouse');
+      
+      let mouse=[0.5,0.5];
+      canvas.addEventListener('mousemove', e=>{
+        const r=canvas.getBoundingClientRect();
+        mouse=[(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height];
+      },{passive:true});
+      
+      let tiltX = 0, tiltY = 0;
+      let targetTiltX = 0, targetTiltY = 0;
+      let currentTiltX = 0, currentTiltY = 0;
+      
+      window.addEventListener('deviceorientation', e => {
+        if (e.beta !== null && e.gamma !== null) {
+          targetTiltX = Math.max(-1, Math.min(1, e.beta / 90));
+          targetTiltY = Math.max(-1, Math.min(1, e.gamma / 90));
+        }
+      });
+      
+      function updateBallRotation() {
+        currentTiltX += (targetTiltX - currentTiltX) * 0.1;
+        currentTiltY += (targetTiltY - currentTiltY) * 0.1;
+        const ballWrap = document.querySelector('.ball-wrap');
+        if (ballWrap) {
+          ballWrap.style.transform = `rotateX(${currentTiltX * 15}deg) rotateY(${currentTiltY * 15}deg)`;
+        }
+        requestAnimationFrame(updateBallRotation);
+      }
+      updateBallRotation();
+      
+      let t0 = performance.now();
+      function frame(now){
+        resize();
+        gl.viewport(0,0,canvas.width,canvas.height);
+        gl.useProgram(prog);
+        gl.enableVertexAttribArray(locPos);
+        gl.vertexAttribPointer(locPos, 2, gl.FLOAT, false, 0, 0);
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform1f(uTime, (now - t0)/1000);
+        gl.uniform2f(uMouse, mouse[0], mouse[1]);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+      
+      document.addEventListener('visibilitychange', ()=>{
+        if(document.hidden){
+        }
+      });
+    })();
+
+    function initAllEffects() {
+      initEnergyWaves();
+      initFloatingElements();
+      initPsychicAura();
+      
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('resize', handleResize);
+      
+      requestAnimationFrame(animateEffects);
+    }
+
+    function initEnergyWaves() {
+      if (!EFFECT_SETTINGS.energyWaves.enabled) return;
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+      
+      hero.addEventListener('mousemove', (e) => {
+        if (energyWaves.length < EFFECT_SETTINGS.energyWaves.waveCount) {
+          createEnergyWave(e.clientX, e.clientY);
+        }
+      });
+    }
+    
+    function createEnergyWave(x, y) {
+      const wave = document.createElement('div');
+      wave.className = 'energy-wave';
+      wave.style.left = `${x}px`;
+      wave.style.top = `${y}px`;
+      wave.style.borderColor = EFFECT_SETTINGS.energyWaves.color;
+      document.getElementById('wavesContainer').appendChild(wave);
+      
+      energyWaves.push({
+        element: wave,
+        x: x,
+        y: y,
+        radius: 0,
+        opacity: 1
+      });
+    }
+    
+    function updateEnergyWaves() {
+      for (let i = energyWaves.length - 1; i >= 0; i--) {
+        const wave = energyWaves[i];
+        wave.radius += EFFECT_SETTINGS.energyWaves.speed * 2;
+        wave.opacity -= 0.01;
+        
+        if (wave.opacity <= 0) {
+          wave.element.remove();
+          energyWaves.splice(i, 1);
+        } else {
+          wave.element.style.width = `${wave.radius * 2}px`;
+          wave.element.style.height = `${wave.radius * 2}px`;
+          wave.element.style.opacity = wave.opacity;
+        }
+      }
+    }
+
+    function initFloatingElements() {
+      if (!EFFECT_SETTINGS.floatingElements.enabled) return;
+      const container = document.createElement('div');
+      container.id = 'floatingElementsContainer';
+      document.body.appendChild(container);
+      
+      for (let i = 0; i < EFFECT_SETTINGS.floatingElements.count; i++) {
+        const element = document.createElement('div');
+        element.className = 'floating-element';
+        const symbol = EFFECT_SETTINGS.floatingElements.symbols[
+          Math.floor(Math.random() * EFFECT_SETTINGS.floatingElements.symbols.length)
+        ];
+        const color = EFFECT_SETTINGS.floatingElements.colors[
+          Math.floor(Math.random() * EFFECT_SETTINGS.floatingElements.colors.length)
+        ];
+        const size = Math.random() * (EFFECT_SETTINGS.floatingElements.size.max - EFFECT_SETTINGS.floatingElements.size.min) + EFFECT_SETTINGS.floatingElements.size.min;
+        const duration = Math.random() * (EFFECT_SETTINGS.floatingElements.duration.max - EFFECT_SETTINGS.floatingElements.duration.min) + EFFECT_SETTINGS.floatingElements.duration.min;
+        
+        element.textContent = symbol;
+        element.style.color = color;
+        element.style.fontSize = `${size}px`;
+        
+        const startX = Math.random() * 100;
+        const startY = Math.random() * 100;
+        const endX = Math.random() * 100;
+        const endY = Math.random() * 100;
+        
+        element.style.setProperty('--startX', `${startX}vw`);
+        element.style.setProperty('--startY', `${startY}vh`);
+        element.style.setProperty('--endX', `${endX}vw`);
+        element.style.setProperty('--endY', `${endY}vh`);
+        element.style.animationDuration = `${duration}s`;
+        
+        container.appendChild(element);
+      }
+    }
+
+    function initPsychicAura() {
+      if (!EFFECT_SETTINGS.psychicAura.enabled) return;
+      auraCanvas = document.getElementById('auraCanvas');
+      if (!auraCanvas) {
+        console.error('Canvas для ауры гадалки не найден');
+        return;
+      }
+      
+      auraCtx = auraCanvas.getContext('2d');
+      handleResize();
+      
+      if (EFFECT_SETTINGS.psychicAura.particles.enabled) {
+        auraParticles = [];
+        for (let i = 0; i < EFFECT_SETTINGS.psychicAura.particles.count; i++) {
+          auraParticles.push(createAuraParticle());
+        }
+      }
+    }
+    
+    function createAuraParticle() {
+      const settings = EFFECT_SETTINGS.psychicAura.particles;
+      const canvasSize = Math.min(auraCanvas.width, auraCanvas.height);
+      const centerX = auraCanvas.width / 2;
+      const centerY = auraCanvas.height / 2;
+      const maxRadius = canvasSize * EFFECT_SETTINGS.psychicAura.baseRadius * 0.45;
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * maxRadius;
+      
+      return {
+        x: centerX + Math.cos(angle) * distance,
+        y: centerY + Math.sin(angle) * distance,
+        size: Math.random() * (settings.size.max - settings.size.min) + settings.size.min,
+        speedX: (Math.random() - 0.5) * 2 * settings.speed.max,
+        speedY: (Math.random() - 0.5) * 2 * settings.speed.max,
+        symbol: settings.symbols[Math.floor(Math.random() * settings.symbols.length)],
+        color: settings.colors[Math.floor(Math.random() * settings.colors.length)],
+        life: 1.0,
+        decay: Math.random() * (settings.lifeDecay.max - settings.lifeDecay.min) + settings.lifeDecay.min
+      };
+    }
+    
+    function drawPsychicAura(ctx) {
+      if (!EFFECT_SETTINGS.psychicAura.enabled) return;
+      const settings = EFFECT_SETTINGS.psychicAura;
+      const canvasSize = Math.min(auraCanvas.width, auraCanvas.height);
+      const centerX = auraCanvas.width / 2;
+      const centerY = auraCanvas.height / 2;
+      const maxRadius = canvasSize * settings.baseRadius * 0.5;
+      
+      auraTime += settings.pulseSpeed;
+      const pulse = Math.sin(auraTime) * 0.05 + 1;
+      const radius = maxRadius * pulse;
+      
+      const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+      gradient.addColorStop(0, `rgba(${settings.color}, ${settings.baseOpacity})`);
+      gradient.addColorStop(0.7, `rgba(${settings.color}, ${settings.baseOpacity * 0.5})`);
+      gradient.addColorStop(1, `rgba(${settings.color}, 0)`);
+      
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+    }
+    
+    function updateAndDrawAuraParticles(ctx) {
+      if (!EFFECT_SETTINGS.psychicAura.particles.enabled) return;
+      const canvasSize = Math.min(auraCanvas.width, auraCanvas.height);
+      const centerX = auraCanvas.width / 2;
+      const centerY = auraCanvas.height / 2;
+      const maxRadius = canvasSize * EFFECT_SETTINGS.psychicAura.baseRadius * 0.45;
+      
+      for (let i = 0; i < auraParticles.length; i++) {
+        let p = auraParticles[i];
+        
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.life -= p.decay;
+        
+        const dx = p.x - centerX;
+        const dy = p.y - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance > maxRadius || p.life <= 0) {
+          auraParticles[i] = createAuraParticle();
+          continue;
+        }
+        
+        ctx.font = `${p.size}px Arial`;
+        ctx.fillStyle = p.color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.globalAlpha = p.life;
+        ctx.fillText(p.symbol, p.x, p.y);
+      }
+      ctx.globalAlpha = 1.0;
+    }
+
+    function handleMouseMove(e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        const rect = hero.getBoundingClientRect();
+        isMouseInHero = (
+          mouseX >= rect.left &&
+          mouseX <= rect.right &&
+          mouseY >= rect.top &&
+          mouseY <= rect.bottom
+        );
+      }
+    }
+    
+    function handleResize() {
+      if (auraCanvas) {
+        const wrapper = auraCanvas.parentElement;
+        if (wrapper) {
+            auraCanvas.width = wrapper.clientWidth;
+            auraCanvas.height = wrapper.clientHeight;
+        }
+      }
+      
+      const mainCanvas = document.getElementById('ball');
+      if (mainCanvas) {
+        const dpr = Math.min(2, window.devicePixelRatio||1);
+        const side = mainCanvas.clientWidth||mainCanvas.parentElement.offsetWidth;
+        mainCanvas.width = Math.floor(side*dpr);
+        mainCanvas.height= Math.floor(side*dpr);
+      }
+      
+      const cursorCanvas = document.getElementById('cursorAura');
+      if (cursorCanvas) {
+        cursorCanvas.width=window.innerWidth;
+        cursorCanvas.height=window.innerHeight;
+      }
+    }
+
+    function animateEffects() {
+      if (auraCtx && auraCanvas) {
+        auraCtx.clearRect(0, 0, auraCanvas.width, auraCanvas.height);
+        drawPsychicAura(auraCtx);
+        updateAndDrawAuraParticles(auraCtx);
+      }
+      updateEnergyWaves();
+      requestAnimationFrame(animateEffects);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const photoElement = document.getElementById('psychicPhoto');
+        const stickyPhotoElement = document.querySelector('.sticky-whatsapp .avatar img');
+        if (photoElement) {
+            photoElement.src = SITE_SETTINGS.psychicImageURL;
+            photoElement.alt = SITE_SETTINGS.psychicName ? `Фото ${SITE_SETTINGS.psychicName}` : "Фото гадалки";
+        }
+        if (stickyPhotoElement) {
+            stickyPhotoElement.src = SITE_SETTINGS.psychicImageURL;
+            stickyPhotoElement.alt = SITE_SETTINGS.psychicName ? `Фото ${SITE_SETTINGS.psychicName}` : "Фото гадалки";
+        }
+      
+      initAllEffects();
+      
+      if (SITE_SETTINGS.yandexMetrikaId) {
+        const s = document.createElement('script');
+        s.type = 'text/javascript'; s.async = true;
+        s.innerHTML = `
+          (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r)return;}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+          (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+          ym(${SITE_SETTINGS.yandexMetrikaId},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+        `;
+        document.head.appendChild(s);
+      }
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
+      });
+      
+      const heroGreetings = [
+        {h:[0,1,2,3,4,5],  txt:'Ночь – время тайных ритуалов… 🌌'},
+        {h:[6],             txt:'Рассвет подарит ответ на главный вопрос 🌅'},
+        {h:[7,8],           txt:'Утро – момент чистой интуиции ☕'},
+        {h:[9,10],          txt:'Карты уже раскрыты для вас ✨'},
+        {h:[11,12],         txt:'Полдень – идеальное время для денежной магии 💰'},
+        {h:[13,14],         txt:'Свет дня усиливает защиту 🌞'},
+        {h:[15,16],         txt:'Сумерки раскроют сердечные тайны ❤️'},
+        {h:[17,18],         txt:'Вечер – путь к глубинным знаниям 🌆'},
+        {h:[19,20],         txt:'Ночь покажет, что скрыто от глаз 🌙'},
+        {h:[21,22],         txt:'Последний час – магия вне времени ⏳'},
+        {h:[23],            txt:'Переходный миг – ключ к судьбе 🔑'}
+      ];
+
+      function showHeroChat(){
+        const now = new Date();
+        const currentHour = now.getHours();
+        let greeting = heroGreetings.find(g => g.h.includes(currentHour)) || heroGreetings[0];
+        
+        const chatBubble = document.getElementById('heroChatBubble');
+        const span  = document.getElementById('heroChatText');
+        if (!chatBubble || !span) return;
+        
+        span.textContent = '';
+        chatBubble.classList.add('show');
+        
+        [...greeting.txt].forEach((ch,i)=>{
+          setTimeout(()=> span.textContent += ch, i*45);
+        });
+      }
+      showHeroChat();
+
+      const greetings = [
+        {h:[0,1,2,3,4,5],  txt:'Ночь раскрывает завесу тайн…'},
+        {h:[6],             txt:'Рассвет принесет ясность'},
+        {h:[7,8],           txt:'Утро даст ответы на вопросы'},
+        {h:[9,10],          txt:'День наполнится возможностями'},
+        {h:[11,12],         txt:'Полдень откроет денежные пути'},
+        {h:[13,14],         txt:'Послеполуденное время для защиты'},
+        {h:[15,16],         txt:'Сумерки расскажут о любви'},
+        {h:[17,18],         txt:'Вечер принесет мудрость'},
+        {h:[19,20],         txt:'Ночь покажет будущее'},
+        {h:[21,22],         txt:'Поздний вечер для медитации'},
+        {h:[23],            txt:'Полночь – время магии'}
+      ];
+
+      function showCTAChat(){
+        const now = new Date();
+        const currentHour = now.getHours();
+        let greeting = greetings.find(g => g.h.includes(currentHour)) || greetings[0];
+        
+        const chatBubble = document.getElementById('ctaChatBubble');
+        const span  = document.getElementById('ctaChatText');
+        if (!chatBubble || !span) return;
+        
+        span.textContent = '';
+        chatBubble.classList.add('show');
+        
+        [...greeting.txt].forEach((ch,i)=>{
+          setTimeout(()=> span.textContent += ch, i*45);
+        });
+      }
+      showCTAChat();
+      
+      handleRedirect();
+    });
+
+    function createSpark(x, y) {
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+      spark.innerHTML = '✨';
+      spark.style.left = `${x}px`;
+      spark.style.top = `${y}px`;
+      spark.style.color = `hsl(${260 + Math.random() * 60}, 100%, 70%)`;
+      document.body.appendChild(spark);
+      
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 2 + Math.random() * 3;
+      const vx = Math.cos(angle) * speed;
+      const vy = Math.sin(angle) * speed;
+      let opacity = 1;
+      
+      function animate() {
+        const currentX = parseFloat(spark.style.left);
+        const currentY = parseFloat(spark.style.top);
+        spark.style.left = `${currentX + vx}px`;
+        spark.style.top = `${currentY + vy}px`;
+        opacity -= 0.03;
+        spark.style.opacity = opacity;
+        
+        if (opacity > 0) {
+          requestAnimationFrame(animate);
+        } else {
+          spark.remove();
+        }
+      }
+      animate();
+    }
+    
+    document.getElementById('stickyWaBtn').addEventListener('click', function(e) {
+      const rect = this.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          createSpark(centerX, centerY);
+        }, i * 30);
+      }
+    });
+
+    function animateEnvelope(startX, startY, endX, endY) {
+      const envelope = document.createElement('div');
+      envelope.className = 'envelope-animation';
+      envelope.innerHTML = '✉️';
+      envelope.style.setProperty('--startX', `${startX}px`);
+      envelope.style.setProperty('--startY', `${startY}px`);
+      envelope.style.setProperty('--endX', `${endX}px`);
+      envelope.style.setProperty('--endY', `${endY}px`);
+      document.body.appendChild(envelope);
+      
+      envelope.addEventListener('animationend', () => {
+        envelope.remove();
+      });
+    }
+    
+    const originalOpenPortal = openPortal;
+    window.openPortal = function(e) {
+      e?.preventDefault();
+      
+      const btnRect = e?.target?.getBoundingClientRect();
+      const stickyBtnRect = document.getElementById('stickyWaBtn')?.getBoundingClientRect();
+      
+      if (btnRect) {
+        animateEnvelope(
+          btnRect.left + btnRect.width / 2,
+          btnRect.top + btnRect.height / 2,
+          window.innerWidth - 50,
+          window.innerHeight - 50
+        );
+      } else if (stickyBtnRect) {
+      }
+      
+      originalOpenPortal(e);
+    };
+
+    let lastTap = 0;
+    document.addEventListener('touchend', function(e) {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      
+      if (tapLength < 300 && tapLength > 0) {
+        if (e.changedTouches && e.changedTouches[0]) {
+            createHeartAnimation(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+            setTimeout(() => {
+              window.location.href = `https://wa.me/${SITE_SETTINGS.phoneNumber.replace(/\D/g,'')}?text=${encodeURIComponent('💜 нужна помощь')}`;
+            }, 800);
+        }
+      }
+      lastTap = currentTime;
+    });
+    
+    function createHeartAnimation(x, y) {
+      const heart = document.createElement('div');
+      heart.className = 'heart-animation';
+      heart.innerHTML = '💜';
+      heart.style.left = `${x - 25}px`;
+      heart.style.top = `${y - 25}px`;
+      document.body.appendChild(heart);
+      
+      heart.addEventListener('animationend', () => {
+        heart.remove();
+      });
+    }
+
+    document.addEventListener('touchstart', function(e) {
+      if (e.touches && e.touches[0]) {
+          const touch = e.touches[0];
+          createMagicTap(touch.clientX, touch.clientY);
+      }
+    });
+    
+    function createMagicTap(x, y) {
+      const symbols = ['✨', '🔮', '✦', '✧', '☽'];
+      const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+      const tap = document.createElement('div');
+      tap.className = 'magic-tap';
+      tap.style.left = x + 'px';
+      tap.style.top = y + 'px';
+      tap.innerHTML = symbol;
+      
+      const btn = document.querySelector('.sticky-whatsapp');
+      if (btn) {
+        const btnRect = btn.getBoundingClientRect();
+        tap.style.setProperty('--startX', x + 'px');
+        tap.style.setProperty('--startY', y + 'px');
+        tap.style.setProperty('--endX', (btnRect.left + btnRect.width/2) + 'px');
+        tap.style.setProperty('--endY', (btnRect.top + btnRect.height/2) + 'px');
+      }
+      
+      document.body.appendChild(tap);
+      setTimeout(() => tap.remove(), 1500);
+    }
+
+    function updateMoonPhase() {
+      const moon = document.querySelector('.moon-phase');
+      if (!moon) return;
+      
+      const now = new Date();
+      const day = now.getDate();
+      const phase = day % 29;
+      
+      let boxShadow = '0 0 15px var(--p1)';
+      
+      if (phase < 7) {
+        boxShadow = 'inset -10px 0 0 var(--p1), 0 0 15px var(--p1)';
+      } else if (phase < 14) {
+        boxShadow = '0 0 15px var(--p1)';
+      } else if (phase < 21) {
+        boxShadow = 'inset 10px 0 0 var(--p1), 0 0 15px var(--p1)';
+      } else {
+        boxShadow = 'inset 0 0 0 20px var(--p1), 0 0 15px var(--p1)';
+      }
+      
+      moon.style.boxShadow = boxShadow;
+    }
+    
+    updateMoonPhase();
+  </script>
+<script src="stats.js"></script>
 </body>
 </html>
