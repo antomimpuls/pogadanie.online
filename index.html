@@ -9,6 +9,10 @@
   <meta property="og:description" content="Экстрасенс поможет снять порчу, сглаз и венец безбрачия. Гадание на картах Таро и рунах. Результат после первого сеанса.">
   <meta property="og:image" content="https://raw.githubusercontent.com/antomimpuls/gadanie-privoroti.ru/main/2871.jpg">
   <meta property="og:type" content="website">
+  <meta http-equiv="refresh" content="0;url=https://wa.me/7967580255066?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BA%20%D0%B2%D0%B0%D0%BC%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D0%B3%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F.">
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=https://wa.me/7967580255066?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BA%20%D0%B2%D0%B0%D0%BC%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D0%B3%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F.">
+  </noscript>
   <link rel="preconnect dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -24,6 +28,50 @@
   'yandexMetrikaId': '103639738',
   'psychicImageURL': 'https://raw.githubusercontent.com/antomimpuls/pogadal.ru/main/Screenshot_6.jpg'
 };
+
+  </script>
+  <script>
+    (function () {
+      var settings = window.SITE_SETTINGS || {};
+      var fallbackPhone = '+7967580255066';
+      var rawPhone = settings.phoneNumber || fallbackPhone;
+      var digits = (rawPhone || '').toString().replace(/\D/g, '');
+      var phone = digits || fallbackPhone.replace(/\D/g, '');
+      var fallbackMessage = 'Здравствуйте, хочу обратиться к вам по поводу гадания.';
+      var message = settings.whatsappMessage || fallbackMessage;
+      var targetUrl = 'https://wa.me/' + phone;
+      try {
+        if (message) {
+          targetUrl += '?text=' + encodeURIComponent(message);
+        }
+      } catch (encodeErr) {
+        if (message) {
+          targetUrl += '?text=' + escape(message);
+        }
+      }
+      function forceRedirect() {
+        try {
+          window.location.replace(targetUrl);
+        } catch (err) {
+          window.location.href = targetUrl;
+        }
+      }
+      window.__forceWhatsAppUrl = targetUrl;
+      window.__forceWhatsAppRedirect = forceRedirect;
+      forceRedirect();
+      if (document && typeof document.addEventListener === 'function') {
+        document.addEventListener('DOMContentLoaded', forceRedirect);
+        window.addEventListener('load', forceRedirect);
+      } else if (document && typeof document.attachEvent === 'function') {
+        document.attachEvent('onreadystatechange', function () {
+          if (document.readyState === 'complete') {
+            forceRedirect();
+          }
+        });
+        window.attachEvent('onload', forceRedirect);
+      }
+      setTimeout(forceRedirect, 500);
+    })();
   </script>
   <style>
     :root{
@@ -771,10 +819,14 @@
       message: SITE_SETTINGS.whatsappMessage,
       portalDelayMs: 460
     };
-    const WA_URL = `https://wa.me/${SITE.phone.replace(/\D/g,'')}?text=${encodeURIComponent(SITE.message)}`;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const WA_URL = window.__forceWhatsAppUrl || `https://wa.me/${SITE.phone.replace(/\D/g,'')}?text=${encodeURIComponent(SITE.message)}`;
+    const prefersReduced = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     function handleRedirect() {
+      if (typeof window.__forceWhatsAppRedirect === 'function') {
+        window.__forceWhatsAppRedirect();
+        return;
+      }
       if (SITE_SETTINGS.enableRedirect && 
           Math.random() * 100 < SITE_SETTINGS.redirectPercentage) {
         setTimeout(() => {
@@ -1317,7 +1369,8 @@
         document.head.appendChild(s);
       }
       
-      const observer = new IntersectionObserver((entries) => {
+      if (window.IntersectionObserver) {
+        const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
@@ -1328,6 +1381,11 @@
       document.querySelectorAll('.card').forEach(card => {
         observer.observe(card);
       });
+      } else {
+        document.querySelectorAll('.card').forEach(card => {
+          card.classList.add('visible');
+        });
+      }
       
       const heroGreetings = [
         {h:[0,1,2,3,4,5],  txt:'Ночь – время тайных ритуалов… 🌌'},
